@@ -1,0 +1,17 @@
+.wrap{
+  padding: 1.3rem;
+  font-size: 1rem;
+}
+
+
+@media (max-width: 767px) {
+
+  .left{
+    margin-bottom: 1.5rem;
+  }
+
+
+
+
+
+}

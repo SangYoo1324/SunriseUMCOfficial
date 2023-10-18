@@ -25,9 +25,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
@@ -85,14 +86,20 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
+
             ],
             "styles": [
+              "node_modules/@fullcalendar/core/main.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b4b0abe9-03aa-42b0-a68e-e40185458b49"
   }
 }

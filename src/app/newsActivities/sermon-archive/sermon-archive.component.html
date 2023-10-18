@@ -1,0 +1,32 @@
+
+
+<section>
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Date</th>
+        <th scope="col">View</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="data-input" *ngFor="let sermon of sermonObservable$ |async let i = index;"
+      [ngClass]="{'pagination-active': i>=(currentPage-1)*limit && i<currentPage*limit}"
+      >
+        <th scope="row">{{sermon.id}}</th>
+        <td>{{sermon.title}}</td>
+        <td>{{sermon.date | date:'yyyy-MM-dd'}}</td>
+        <td><button type="button" class="btn btn-success" routerLink="/newsActivities/sermonDetail/{{sermon.id}}">View</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-pagination
+    [currentPage]="currentPage" [limit]="limit" [total] = "totalNumber"
+    (changePage) = changePage($event)
+  ></app-pagination>
+
+</section>

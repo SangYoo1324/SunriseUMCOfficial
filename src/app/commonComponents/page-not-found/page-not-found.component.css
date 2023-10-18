@@ -1,0 +1,15 @@
+
+
+.con{
+  text-align: center;
+
+  height: 100vh;
+  background-color: lightgrey;
+}
+
+
+.wrap{
+  font-size: 2rem;
+  font-weight: bold;
+  padding-top: 5rem;
+}

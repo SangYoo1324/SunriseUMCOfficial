@@ -1,0 +1,74 @@
+collapse.show {
+  transition: height 0.3s ease;
+}
+
+a.navbar-brand{
+  font-size: 25px;
+}
+.nav-item>a{
+  padding: 0.8rem 0.8rem;
+  font-size: 20px;
+  transition: color 0.5s ease-in-out,background-color 0.5s ease-in-out;
+}
+
+.navbar-brand>img{
+  height: 55px;
+}
+
+.nav-link{
+  font-weight: bold;
+}
+
+.nav-item>a:hover{
+  border-radius: 5px;
+  background-color: azure;
+  color: black;
+  cursor: pointer;
+}
+
+.navbar-brand{
+  padding-left: 1rem;
+}
+
+.navbar-toggler {
+  border: none; /* border 제거 */
+}
+
+.navbar-toggler {
+  outline: none; /* 클릭 시 포커스 아웃라인 제거 */
+  box-shadow: none; /* 클릭 시 박스 쉐도우 제거 */
+}
+.navbar-toggler:not(:focus) {
+  box-shadow: none; /* 포커스가 아닐 때 박스 쉐도우 제거 */
+}
+
+.nav-item{
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+/*.navbar{*/
+/*  background: rgba(0,0,0,0.4);*/
+/*}*/
+
+
+
+
+
+.padding{
+  padding: 0 ;
+}
+
+@keyFrames blink {
+  0%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+  }
+}
+
+
+.transparent{
+  background: transparent;
+}

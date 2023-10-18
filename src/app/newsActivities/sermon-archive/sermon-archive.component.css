@@ -1,0 +1,46 @@
+
+.content-wrap{
+  border: 2px solid black;
+}
+.title{
+  border-bottom: 1px solid black;
+}
+
+.youtube{
+  border-right: 1px solid black;
+}
+
+.hyms{
+  max-height: 350px;
+  height: 300px;
+  border-bottom: 1px solid black;
+}
+
+.details{
+
+}
+
+iframe{
+  margin-top: 0.5rem;
+}
+
+table{
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  table{
+    font-size: 0.5rem;
+  }
+
+
+}
+
+.data-input{
+  display: none;
+}
+
+.pagination-active{
+  display: table-row;
+  width: 100%;
+}

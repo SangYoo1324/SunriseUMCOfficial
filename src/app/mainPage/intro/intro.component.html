@@ -1,0 +1,93 @@
+<section id="intro">
+  <div class="container">
+    <app-section-title #sectionTitleComponent></app-section-title>
+    <div class="row">
+      <div class="left col-lg-6">
+
+
+        <iframe width="100%" height="350px"    [src]="(sermonObservable$ | async)?.iframe" title="Build Angular Pagination Without a Library" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+        <div class="pastor-intro card mb-3" style="max-width: 540px; margin-top: 2rem">
+          <div class="wrap row g-0">
+            <div class="img_box col-md-4">
+              <img src="/assets/pastor2019.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Pastor: James C Mozley</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-body-secondary"><a href="pastorjim@sunriseunitedmethodist.org">pastorjim@sunriseunitedmethodist.org</a></small></p>
+                <p class="card-text"><small class="text-body-secondary">(253)-815-6925</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right col-lg-6">
+        <div class="wrap">
+
+          <h2>Hello, <span>We Are</span></h2>
+
+          <p>
+            am sending all of you who visit us here a word of encouragement. No matter where we find
+            ourselves God is there and is working all things together for your good (Rom. 8:28). In these
+            times it is easy to be anxious and fearful. Yet, we can hear Jesus say, “Peace, do not be afraid.” Our Lord knows what is happening and walks with us each and every step. Jesus said, “Come to Me all who are weary and heavy laden (burdened) and I will give you rest.
+            Take My yoke upon you, and learn from Me; for I am gentle and humble in heart, and you will find
+            rest for your souls”-Matthew 11:28-29. Please join us for worship on our Sunrise UMC Facebook
+            page and YouTube. God gives us enough for today and will lead us through the wilderness to safety. Proclaim daily Psalm 91:1-7. Peace of Christ be with you.
+          </p>
+
+
+          <div class="icon_group">
+            <div class="link_wrap">
+              <div>Check Us also with :</div>
+              <a href="https://github.com/SangYoo1324"><i class="fa-brands fa-facebook"></i></a>
+              <a href="https://www.linkedin.com/in/sangbeomyoo"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+
+          </div>
+
+          <div class="nav_group">
+            <div class="row nav_wrap">
+<!--              <div class="group">-->
+                <div class="location nav_item" (click)="goTo('visitorsInfo')">
+                  <div class="text_wrap">
+                    <div>Location</div> <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                </div>
+                <div class="weekly_news nav_item" (click)="goTo('newsActivities')">
+                  <div class="text_wrap">
+                    <div>News & Events</div> <i class="fa-solid fa-newspaper"></i>
+                  </div>
+                </div>
+<!--              </div>-->
+<!--              <div class=" group">-->
+                <div class="sermons nav_item" routerLink="/newsActivities/sermonDetail/1">
+                  <div class="text_wrap">
+                    <div>Sermons</div> <i class="fa-sharp fa-solid fa-file-lines"></i>
+                  </div>
+
+                </div>
+                <div class="online_give nav_item" routerLink="/donation">
+                  <div class="text_wrap">
+                    <div>Online Give</div> <i class="fa-solid fa-box"></i>
+                  </div>
+                </div>
+
+                <div class="event_photos nav_item" routerLink="/eventPhotos">
+                  <div class="text_wrap">
+                    <div>Photos</div><i class="fa-solid fa-camera"></i>
+                  </div>
+                </div>
+
+<!--              </div>-->
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

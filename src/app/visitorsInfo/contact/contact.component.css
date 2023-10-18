@@ -1,0 +1,46 @@
+.wrap{
+  background-image: linear-gradient(to left,rgba(0,0,0,.4), rgba(0,0,0,.8))
+    ,url("/assets/contact_board.jpg");
+  height: 500px;
+  border-radius: 2rem;
+  color: white;
+  font-size: 15px;
+
+}
+
+i.fa-solid{
+  width: 4rem;
+  display: block;
+  font-size: 4rem;
+  margin: 1rem auto;
+}
+
+.inner-wrap{
+  width: 80%;
+  margin: auto;
+  padding-top: 1rem;
+}
+
+section{
+  background: lightgrey;
+}
+
+h5,h4,h2, p{
+  text-align: center;
+}
+
+.submit-btn{
+
+
+}
+
+
+
+
+@media (max-width: 1024px) {
+
+  .left{
+    margin-bottom: 2rem;
+  }
+}
+

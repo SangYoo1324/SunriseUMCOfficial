@@ -1,0 +1,157 @@
+.left{
+  height: fit-content;
+}
+.right{
+  height: fit-content;
+}
+
+.pastor-intro{
+
+}
+
+.wrap{
+  padding: 1.3rem;
+  font-size: 1rem;
+}
+
+.img_box{
+  display: flex;
+  align-items: center;
+}
+
+.pastor-intro img{
+  width: 10rem;
+  height: 80%;
+  padding: 0 0.7rem;
+  /*border-radius: 3rem;*/
+}
+
+.card-body{
+  font-size: 15px;
+}
+
+
+.icon_group{
+  font-size: 1.5rem;
+}
+.link_wrap>div{
+  color: #ed4848;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+}
+.link_wrap{
+  display: flex;
+  justify-content: flex-end;
+}
+i{
+  padding-left: 0.5rem;
+}
+
+.fa-youtube{
+  color: red;
+}
+
+span{
+  color: #ed4848;
+}
+
+/*nav_group */
+
+.nav_wrap{
+  margin-top: 2rem;
+  margin-left: 0.1rem;
+}
+
+.group{
+  display: flex;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+
+.nav_item{
+  border-radius: 0.2rem;
+  width: 24%;
+  height: 90px;
+  margin-right: 0.2rem;
+  margin-bottom: 0.2rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text_wrap>p, .text_wrap>i{
+  display: block;
+}
+
+.text_wrap{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text_wrap>div{
+  color: white;
+  font-size: 1.1rem;
+}
+
+.location{
+  background-image: url("/assets/nav1.gif");
+}
+
+.weekly_news{
+  background-image: url("/assets/nav2.gif");
+}
+
+.event_photos{
+  background-image: url("/assets/nav3.gif");
+}
+
+.sermons{
+  background-image: url("/assets/nav4.gif");
+}
+
+.online_give{
+  background-image: url("/assets/nav1.gif");
+}
+
+
+
+
+/*nav_group:end */
+
+@media (max-width: 1024px) {
+  .nav_wrap{
+    width: 100%;
+  }
+  .left{
+    height: fit-content;
+  }
+  .right{
+    height: fit-content;
+  }
+
+
+  .p{
+    font-size: 13px;
+  }
+
+  .text_wrap>div{
+    color: white;
+    font-size: 1rem;
+  }
+
+  .jumbotron_text_box{
+    width: 90%;
+    transform: translate(-50%,-50%);
+  }
+
+  .btn_wrap{
+    display: block;
+  }
+
+  .nav_item{
+    width: 47.6%;
+  }
+}

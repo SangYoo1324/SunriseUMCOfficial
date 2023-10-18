@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url('https://webfontworld.github.io/cookierun/CookieRun.css');
+@font-face{
+  font-family:'LotteMartHappyme';
+  font-style:normal;
+  font-weight:400;
+  src:url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'),
+  url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
+}
+
+main{
+  position: relative;
+}
+
+
+
+
+section{
+  font-family: "LotteMartHappyme";
+  font-size: 25px;
+  color: #1e2125;
+  /*background: #1e2125;*/
+  padding: 5rem 0;
+  /*background: #1e2125;*/
+}
+
+
+.router-active{
+
+  border-bottom: 2px solid azure;
+  cursor: pointer;
+}
+

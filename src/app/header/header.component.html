@@ -1,0 +1,31 @@
+
+<nav #navBar class="navbar navbar-expand-lg navbar-dark  fixed-top padding" [ngStyle]="{'background': isAtTop && toggleBtnNotActive ? 'rgba(0,0,0,0.9)':'rgba(0,0,0,0.9)' }" >
+                                                                      <!--  transparent only when isAtTop , toggleBtnNotActive both true-->
+  <div class="container-fluid">
+    <a routerLink="/"
+       class="navbar-brand" href="#"><img src="assets/logo.png" alt=""><b>&nbsp; <span #ChangingWord></span></b></a>
+    <button #navBarToggler (click)="toggleBtnClick($event)"
+            class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end"   id="navbarSupportedContent" #navBarContent>
+      <ul class="navbar-nav mb-lg-0">
+        <li class="nav-item">
+          <a routerLinkActive="router-active" routerLink="/visitorsInfo" class="nav-link active" aria-current="page" >Visitor Info</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="router-active" routerLink="/childrenYouth" class="nav-link active" aria-current="page"  >Children & Youth</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="router-active" routerLink="/ministries" class="nav-link active" aria-current="page" >Ministries</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="router-active" routerLink="/newsActivities" class="nav-link active" aria-current="page" >News& Activities</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+

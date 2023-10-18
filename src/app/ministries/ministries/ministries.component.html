@@ -1,0 +1,49 @@
+<app-page-title #ministryTitle></app-page-title>
+<section>
+  <div class="container">
+    <div class="card title-card">
+      <div class="card-header">
+        HELPING OTHERS
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>You, my brothers, were called to be free. But do not use your freedom to indulge the sinful nature; rather, serve one another in love.</p>
+          <footer class="blockquote-footer"> Galatians 5:13 <cite title="Source Title"></cite></footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="intro-statement">
+      <app-section-title #sectionTitle></app-section-title>
+      <p>Sunrise has an active prayer chain of prayer "warriors". If you would like to be added to our list of active members, please call Brad in the office.
+        May we pray for you? If you have a joy or a concern you would like us to pray for, please call us at the office at (253) 815-6925 during office hours.
+        Outside of office hours, call the office and leave a message. Or you can e-mail Brad at office@sunriseunitedmethodist.org. Please include your name,
+        the name of the person to be prayed for and what you would like us to pray about.
+      </p>
+    </div>
+
+    <app-expanding-card #cardComponent
+      [contentArray]="contentItems"
+    ></app-expanding-card>
+  </div>
+</section>
+
+
+<style>
+  .intro-statement{
+    width: 80%;
+    margin: 3rem auto;
+    font-size: 1.2rem;
+    margin-bottom: 10rem;
+  }
+
+
+  @media (max-width: 767px) {
+    .intro-statement{
+      font-size: 1rem;
+    }
+
+
+  }
+
+</style>

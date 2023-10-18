@@ -1,0 +1,104 @@
+<app-page-title #pageTitleComponent></app-page-title>
+<input type="file">
+<section>
+
+  <div class="container">
+    <button id="logOut" (click)="logOut()">Log Out</button>
+
+    <h1>Upload Sermon Contents</h1>
+<!--                                    myForm object type을 ngForm으로 명시해줌-->
+    <form (ngSubmit)="onSubmit(myForm.value)" #myForm = "ngForm">
+      <div class="mb-3">
+        <label for="iframe" class="form-label" >Youtube Iframe URL</label>
+        <input #iframe="ngModel" required ngModel name="iframe" type="text" class="form-control" id="iframe" aria-describedby="iframeHelp">
+        <div id="iframeHelp" class="form-text">ex) - https://www.youtube.com/embed/IF0yphO3ERQ</div>
+        <div><small *ngIf="iframe.invalid && iframe.touched">This is required field</small></div>
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">title</label>
+        <input #title="ngModel" required ngModel name="title" type="text" class="form-control" id="title">
+        <div><small *ngIf="title.invalid && title.touched">This is required field</small></div>
+      </div>
+
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input #date="ngModel" required [(ngModel)]="defaultDate" name="date" type="date" class="form-control" id="date">
+        <div><small *ngIf="date.invalid && date.touched">This is required field</small></div>
+      </div>
+
+      <div class="mb-3">
+        <label for="hyms" class="form-label">Hyms</label>
+        <div *ngFor="let input of hymsinputs; let i  = index" class="input-wrap">
+          <input required [(ngModel)]="input.value" name="hyms" type="text" class="form-control" id="hyms">
+          <button type="button" (click)="addInput()">+</button>
+          <button type="button" (click)="removeInput(i)">-</button>
+        </div>
+
+      </div>
+
+      <div class="mb-3">
+        <label for="scripture" class="form-label">scripture</label>
+        <textarea required ngModel name="scripture" class="form-control" id="scripture"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid" >Submit</button>
+    </form>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h1>Sermon Database</h1>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Date</th>
+        <th scope="col">View</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="data-input" *ngFor="let sermon of sermonObservable$ |async let i = index;"
+          [ngClass]="{'pagination-active': i>=(currentPage-1)*limit && i<currentPage*limit}"
+      >
+        <th scope="row">{{sermon.id}}</th>
+        <td>{{sermon.title}}</td>
+        <td>{{sermon.date | date:'yyyy-MM-dd'}}</td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteItem(sermon.id)">Delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-pagination
+    [currentPage]="currentPage" [limit]="limit" [total] = "totalNumber"
+    (changePage) = changePage($event)
+  ></app-pagination>
+</section>
+
+
+  <app-photo-event-control></app-photo-event-control>
+
+<style>
+  input.ng-invalid.ng-touched{
+    border: red 1px solid;
+  }
+
+  small{
+    color: red;
+  }
+
+  #logOut{
+    margin-bottom: 2rem;
+  }
+
+  .input-wrap{
+    display: flex;
+  }
+  input{
+    width: 80%;
+  }
+
+</style>
+

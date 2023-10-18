@@ -1,0 +1,58 @@
+<section>
+
+  <div class="container">
+    <h1 class="mb-5">EventPhoto Post</h1>
+
+
+    <form (ngSubmit)="onSubmit(myForm.value)" #myForm = "ngForm">
+
+      <div class="mb-3">
+        <label for="title" class="form-label">title</label>
+        <input #title="ngModel" required ngModel name="title" type="text" class="form-control" id="title">
+        <div><small *ngIf="title.invalid && title.touched">This is required field</small></div>
+      </div>
+
+      <div class="mb-3">
+        <label for="subTitle" class="form-label">subTitle</label>
+        <input #title="ngModel" required ngModel name="subTitle" type="text" class="form-control" id="subTitle">
+        <div><small *ngIf="title.invalid && title.touched">This is required field</small></div>
+      </div>
+
+      <div class="input-group mb-3" *ngFor="let input of photoInputs; let i = index;">
+        <label class="input-group-text" >Upload</label>
+        <input id="images" type="file" (change)="onFileInputChange($event, i)" #fileInput>
+        <label class="file-label">
+
+<!--          <span *ngIf="fileInputs.get(i)">{{fileInputs.get(i)!.nativeElement.value}}</span>-->
+<!--          <span *ngIf="!fileInputs.get(i)">Choose a file...</span>-->
+
+          <span *ngIf="photoInputs[i] !==null && photoInputs[i] !== undefined">{{photoInputs[i]?.[0]!.name}}</span>
+                    <span *ngIf="photoInputs[i] == null && photoInputs[i] == undefined">Choose a file...</span>
+          <button type="button" (click)="upload(i)">upload</button>
+        </label>
+        <button type="button" (click)="addInput()">+</button>
+        <button type="button" (click)="removeInput(i)">-</button>
+      </div>
+
+
+
+
+
+      <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid" >Submit</button>
+    </form>
+
+  </div>
+</section>
+
+
+<style>
+  #images{
+    display: none;
+  }
+  .file-label {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+</style>

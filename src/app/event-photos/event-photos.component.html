@@ -1,0 +1,67 @@
+<app-page-title #pageTitle></app-page-title>
+
+<section>
+  <div class="container">
+    <app-section-title #sectionTitle></app-section-title>
+  </div>
+  <app-search
+    (inputEvent)="catchInputEvent($event)"
+  ></app-search>
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3 item"
+           [ngClass]="{'pagination-active':  event.id > (currentPage-1)*limit && event.id <=currentPage*limit
+            && searchKeyword === '',
+            'search-active':searchKeyword !== '' && event.title.includes(searchKeyword)}"
+           *ngFor="let event of eventPhotosObservable$ | async" routerLink="/eventPhotos/photoDetail/{{event.id}}">
+        <div class="card">
+          <img [src]="event.cloudinaryUrl[0]" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{event.title}} &nbsp; {{event.id}}</h5>
+            <p class="card-text">{{event.subTitle}}</p>
+            <p class="card-text"><small class="text-body-secondary">from {{event.date}}</small></p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <app-pagination *ngIf="isTotalCountAvailable()"
+      [currentPage]="currentPage" [limit]="limit" [total] = "totalCount"
+      (changePage) = changePage($event)
+    >
+
+    </app-pagination>
+  </div>
+</section>
+
+<style>
+
+  .card{
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.5);
+  }
+
+  .item{
+    margin-bottom: 2rem;
+    display: none;
+  }
+
+  .card{
+    !important width: 25rem;
+  }
+
+  .pagination-active{
+    display: block;
+  }
+  .search-active{
+    display: block;
+  }
+
+  img{
+    min-height: 250px;
+    max-height: 250px;
+  }
+</style>
