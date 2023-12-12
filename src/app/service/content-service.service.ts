@@ -13,7 +13,7 @@ export class ContentServiceService {
   private prod_apiUrl = prod_environment.apiUrl;
   private dev_apiUrl = dev_environment.apiUrl;
 
-  private apiUrl = this.prod_apiUrl;
+  private apiUrl = this.dev_apiUrl;
 
 
   contentItems:any[] = [
@@ -363,6 +363,9 @@ export class ContentServiceService {
     return this.http.get(this.apiUrl+"api/photo");
   }
 
+  postMessage(data:FormData){
+    return this.http.post(this.apiUrl+"api/send", data);
+  }
 
 
 }

@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, QueryList, Renderer2, ViewChild, ViewChildren} from '@angular/core';
-import {expander} from "../../route-animations";
+import {expander, transparency} from "../../route-animations";
 import {ContentServiceService} from "../../service/content-service.service";
 import {elementAt} from "rxjs";
 
@@ -7,7 +7,7 @@ import {elementAt} from "rxjs";
   selector: 'app-expanding-card',
   templateUrl: './expanding-card.component.html',
   styleUrls: ['./expanding-card.component.css'],
-  animations:[expander]
+  animations:[expander, transparency]
 })
 export class ExpandingCardComponent {
   @ViewChildren('arrow') arrow!:QueryList<ElementRef>;
@@ -38,6 +38,10 @@ export class ExpandingCardComponent {
     otherElements.forEach(element=>{
     this.renderer.setStyle(element.nativeElement, 'color','black');
   })
+  }
+
+  xButtonClick(){
+    this.currentIndex= undefined;
   }
 
 }

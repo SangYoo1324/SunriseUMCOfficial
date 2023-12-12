@@ -90,7 +90,7 @@ import { PhotoEventControlComponent } from './control-panel/photo-event-control/
         FullCalendarModule,
         PaginationModule,
         FormsModule,
-      HttpClientModule
+      HttpClientModule,
     ],
   providers: [AdminGuard, ContentServiceService],
   bootstrap: [AppComponent]

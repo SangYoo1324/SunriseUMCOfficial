@@ -8,8 +8,8 @@ export const transparency =
     // true 일때 css 스타일 정의
     state('true',style({opacity:1, visibility:'visible'})),
     // transition: state변화 경우의 수에 따른 변화 지정
-    transition('false=>true', animate('1000ms ease-in')),
-    transition('true=>false', animate('1000ms ease-out'))
+    transition('false=>true', animate('500ms ease-in')),
+    transition('true=>false', animate('500ms ease-out'))
     ]
   )
 

@@ -2,6 +2,14 @@
   margin-bottom: 5rem;
 }
 
+.card{
+  padding: 0;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-wrap{
+  height: 32vh;
+}
 
 .card-body{
  font-size: 1.0rem;
@@ -23,21 +31,39 @@ i{
 .arrow{
   margin-left: auto;
   width: 2rem;
+  cursor: pointer;
 }
 
-.logo{
-  height: 600px;
-  background-size: cover;
-
+.fa-caret-down{
+  transform: rotate(180deg);
 }
 
 .detail{
-
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  position: absolute;
   /*margin-top: 1rem;*/
   border-top: 1px solid black;
-  /*padding: 1rem 1rem;*/
+  height: 100%;
+  flex: 1;
+}
+
+.detail>p{
+  padding: 1rem;
+  font-size: 0.8rem;
 }
 
 .clicked{
   color: bisque;
+}
+
+.xMark{
+  display: flex;
+  justify-content: right;
+}
+.fa-circle-xmark{
+  display: block;
+  padding-right: 0.5rem;
+  color: white;
+  cursor: pointer;
 }

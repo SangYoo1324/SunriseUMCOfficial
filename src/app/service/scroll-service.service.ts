@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Subject} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -19,6 +19,9 @@ export class ScrollServiceService {
   getSectionId(): Subject<string>{
     return this.sectionIdSubject;
   }
+
+
+
 
 
 

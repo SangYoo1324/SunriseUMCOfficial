@@ -8,7 +8,13 @@
 
         </div>
         <app-carousel
-          [slideInput] = "images"
+          [images] = "images"
+          [indicators]="true"
+          [controls] = "false"
+          [autoSlide] = true
+          [slideInterval]=5000
+          [boxShadow]= "'black'"
+          [subTitleColor]="'white'"
         ></app-carousel>
       </div>
       <div class="col-lg-6 right">

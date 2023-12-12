@@ -14,11 +14,11 @@ export class ChildrenYouthIntroComponent {
   @ViewChild('rightIntroSection') rightIntroSectionComponent!: RightIntroSectionComponent;
   // input으로 carousel 에 들어갈 slide info
   images:any[]= [
-    {url: '/assets/VBS_1.jpg'},
-    {url: '/assets/VBS_2.jpg'},
-    {url: '/assets/VBS_3.jpg'},
-    {url: '/assets/VBS_1.jpg'}
-    ,{url: '/assets/VBS_2.jpg'}
+    {url: '/assets/VBS_1.jpg', title: "imageTitle1", subTitle:"imageSubtitle is here for details"},
+    {url: '/assets/VBS_2.jpg', title: "imageTitle1", subTitle:"imageSubtitle is here for details"},
+    {url: '/assets/VBS_3.jpg',  title: "imageTitle1", subTitle:"imageSubtitle is here for details"},
+    {url: '/assets/VBS_1.jpg',  title: "imageTitle1", subTitle:"imageSubtitle is here for details"}
+    ,{url: '/assets/VBS_2.jpg',  title: "imageTitle1", subTitle:"imageSubtitle is here for details"}
   ];
 
   ngAfterViewInit(){

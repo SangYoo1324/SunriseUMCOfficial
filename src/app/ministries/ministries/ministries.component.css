@@ -2,3 +2,45 @@
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
+
+/*helping others box*/
+.helping-others{
+  background-image:linear-gradient(to top,rgba(255,255,255,.4),rgba(255,255,255,.6)
+  ), url("/assets/Helping_Others.jpg");
+  background-size: cover;
+  background-position: center 40%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+h5{
+  color: #ed4848;
+}
+.box{
+  width: 60%;
+  margin: 0 auto;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer{
+  margin-top: 1rem;
+}
+
+
+
+.intro-statement{
+  width: 80%;
+  margin: 3rem auto;
+  font-size: 1.2rem;
+  margin-bottom: 10rem;
+}
+
+
+@media (max-width: 767px) {
+  .intro-statement{
+    font-size: 1rem;
+  }
+
+
+}

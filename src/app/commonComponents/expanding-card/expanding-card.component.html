@@ -3,9 +3,9 @@
 
 
 <div class="row" >
-  <div class="col-lg-7">
-    <div class="card mb-3" style="max-width: 540px;" *ngFor="let content of contentArray let i = index">
-      <div class="row g-0">
+
+    <div class="card mb-4 m-2" style="max-width: 540px;" *ngFor="let content of contentArray let i = index">
+      <div class="card-wrap row g-0">
         <div class="col-md-4">
           <img src="{{content.url}}" class="img-fluid rounded-start" alt="...">
         </div>
@@ -15,25 +15,26 @@
             <p class="card-text">{{content.brief}}</p>
             <p class="card-text"><small class="text-body-secondary">from &nbsp;{{content.startDate}}</small></p>
             <div class="arrow" #arrow
-
                  (click)="expanderItemClick(i)"><i class="fa-sharp fa-solid fa-caret-down"></i></div>
           </div>
-<!--          [ngClass]="{'clicked': currentIndex === i} "-->
+
         </div>
+        <div class="detail"  [@animate_transparency]="{value: i === currentIndex} ">
+          <p *ngIf="currentIndex === i">
+            {{content.detail}}
+          </p>
+
+          <div class="xMark"
+               (click)="xButtonClick()"><i class="fa-solid fa-circle-xmark"></i></div>
       </div>
-      <div class="detail" [@animate_expander]="{value: i === currentIndex} ">
-        <p>
-         {{content.detail}}
-        </p>
       </div>
-    </div>
 
 
 
-  </div>
-  <div class="logo col-lg-5"
-    [style.background-image]="'url('+url+')'"
-  ></div>
+
+
+
 
 </div>
 
+</div>

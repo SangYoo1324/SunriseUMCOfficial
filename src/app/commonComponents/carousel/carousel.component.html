@@ -1,31 +1,30 @@
-<div #carousel id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-  <div class="carousel-indicators">
-    <button type="button"  *ngFor=" let image of slideInput; let i  = index;"
-            data-bs-target="#carouselExampleAutoplaying" [attr.data-bs-slide-to]="i" [ngClass]="{'active' : i === 0}"
-            [attr.aria-current]="i === 0 ? 'true' : null" [attr.aria-label]="'`Slide ${i+1}`'"></button>
-<!--    <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>-->
-<!--    <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" aria-label="Slide 2"></button>-->
-<!--    <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
-  </div>
-
-  <div class="carousel-inner">
-
-    <div class="carousel-item" *ngFor="let image of slideInput; let  i = index" [ngClass]="{'active' : i === 0}" >
-<!--      index 0에만 active클래스 부여(초기값)-->
-      <img src="{{image.url}}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
+<div *ngIf = "images && images.length >0" class="carousel-container" [ngClass]="{'box-shadow': boxShadow ==='black'}">
+  <!--  <ng-container *ngFor="let image of images; let i = index">-->
+  <img *ngFor="let image of images; let i = index" [src]="image.url" [alt]="image.imageAlt"
+       [ngClass]="{'image-active':selectedIndex ===i}" class="car-fade">
+  <div *ngFor="let image of images; let i = index" class="right"  [ngClass]="{'image-active':selectedIndex ===i}">
+    <div class="text-wrap">
+      <div class="title"><p>{{image.title}}</p></div>
+      <div [ngStyle]="{'color': subTitleColor}"><p><small>"&nbsp;{{image.subTitle}}&nbsp;"</small></p></div>
+      <div class="poster" *ngIf="image.poster">- {{image.poster}}</div>
+<!--      <button class="btn-1"><h5>{{image.buttonText}}</h5></button>-->
     </div>
-
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+  <!--  </ng-container>-->
+
+
+
+  <div *ngIf="indicators" class="carousel-dot-container">
+    <span *ngFor="let dot of images let i = index" class="dot"
+          [ngClass]="{'active': selectedIndex === i}"
+          (click)="selectImage(i)"></span>
+  </div>
+
+  <div *ngIf="controls" class="btn-carousel btn-prev">
+    <i (click)="onPrevClick()"
+       class="fas fa-arrow-circle-left icon-carousel icon-prev"></i></div>
+
+  <div *ngIf="controls" class="btn-carousel btn-next">
+    <i (click)="onNextClick()"
+       class="fas fa-arrow-circle-right icon-carousel icon-next"></i></div>
 </div>

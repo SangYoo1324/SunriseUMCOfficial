@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, QueryList, Renderer2, ViewChild, ViewChildren} from '@angular/core';
 import {ContentServiceService} from "../../service/content-service.service";
+import {ScrollServiceService} from "../../service/scroll-service.service";
 
 @Component({
   selector: 'app-contents-bubble',
@@ -11,7 +12,7 @@ export class ContentsBubbleComponent {
   @Input() contentsItems!:any[];
 
   @ViewChildren('contentCircle') contentTitle!:QueryList<ElementRef>;
-  constructor(private renderer: Renderer2,private contentService:ContentServiceService) {
+  constructor(private scrollService:ScrollServiceService,private renderer: Renderer2,private contentService:ContentServiceService) {
   }
 
   toggledContent:number  =0;
@@ -28,8 +29,9 @@ export class ContentsBubbleComponent {
   mouseToggle(i:number, contentCircle:HTMLElement){
     this.toggledContent = i;
     console.log("currently clicked:  "+i);
+    this.scrollService.setSectionId('contents-bubble-detail');
     this.contentService.numberClickEvent(i);
-    // this.renderer.addClass(contentCircle,'bubble-clicked');
+
   }
 
 }
