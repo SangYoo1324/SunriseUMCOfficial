@@ -10,7 +10,7 @@ import {ContentServiceService} from "../../service/content-service.service";
 export class PhotoEventControlComponent {
 
   photoInputs:  (FileList |null) [] = [] ;
-
+  @ViewChildren('fileInput') fileInputs!:QueryList<ElementRef<HTMLInputElement>>;
   constructor(private contentService:ContentServiceService) {
 
   }
@@ -50,7 +50,7 @@ export class PhotoEventControlComponent {
   }
   }
 
-  @ViewChildren('fileInput') fileInputs!:QueryList<ElementRef<HTMLInputElement>>;
+
 
   // 임의로 만들어진 input label 클릭 시 실제 fileInput 창이 클릭되게 함
   upload(i:number){

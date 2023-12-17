@@ -44,6 +44,12 @@ import {AdminGuard} from "./routeGuard/admin.guard";
 import {ContentServiceService} from "./service/content-service.service";
 import { LoginComponent } from './login/login.component';
 import { PhotoEventControlComponent } from './control-panel/photo-event-control/photo-event-control.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
+import {MatDialogModule} from "@angular/material/dialog";
+import {EventCalendarControlComponent} from "./control-panel/event-calendar-control/event-calendar-control.component";
+import {EventListComponent} from "./control-panel/event-list/event-list.component";
+import {SectionSeparatorComponent} from "./commonComponents/section-separator/section-separator.component";
 
 
 
@@ -83,16 +89,26 @@ import { PhotoEventControlComponent } from './control-panel/photo-event-control/
     LoginComponent,
     PhotoEventControlComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        FullCalendarModule,
-        PaginationModule,
-        FormsModule,
-      HttpClientModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FullCalendarModule,
+    PaginationModule,
+    FormsModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatDialogModule,
+    EventCalendarControlComponent,
+    EventListComponent,
+    SectionSeparatorComponent
+  ],
   providers: [AdminGuard, ContentServiceService],
+  exports: [
+    PageTitleComponent,
+    SectionTitleComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,7 @@
+.padding-0{
+  padding: 0;
+}
+
 collapse.show {
   transition: height 0.3s ease;
 }

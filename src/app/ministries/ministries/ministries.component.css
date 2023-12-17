@@ -12,6 +12,8 @@
   height: 300px;
   display: flex;
   align-items: center;
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 20px black;
 }
 
 h5{
@@ -30,7 +32,7 @@ footer{
 
 
 .intro-statement{
-  width: 80%;
+  /*width: 80%;*/
   margin: 3rem auto;
   font-size: 1.2rem;
   margin-bottom: 10rem;
@@ -42,5 +44,9 @@ footer{
     font-size: 1rem;
   }
 
+  .box{
+    width: 90%;
+
+  }
 
 }

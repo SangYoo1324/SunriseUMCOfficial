@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {filter, from, map, Observable, of, Subject} from "rxjs";
+import {BehaviorSubject, filter, from, map, Observable, of, Subject} from "rxjs";
 import {DomSanitizer} from "@angular/platform-browser";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {dev_environment} from "../env/environment";
@@ -13,7 +13,7 @@ export class ContentServiceService {
   private prod_apiUrl = prod_environment.apiUrl;
   private dev_apiUrl = dev_environment.apiUrl;
 
-  private apiUrl = this.dev_apiUrl;
+  private apiUrl = this.prod_apiUrl;
 
 
   contentItems:any[] = [
@@ -211,23 +211,25 @@ export class ContentServiceService {
   sermonObservable!:Observable<any>
    // = of(this.sermonObject)
 
+  sermonDataStream:BehaviorSubject<any> = new BehaviorSubject<any>(this.fetchSermons());
+
 
 
   postSermon(data:{iframe:string,hyms:{id:any | null, value:string}[],date:Date, scripture:string,title:string}){
-
-
   return  this.http.post(this.apiUrl+'api/sermon',data);
 
   }
 
+  // deleteSermon 사용시 subscribe에서 무조건 loadSermons 사용해서 새로 반영된거 업데이트 하자
   deleteSermon(id:number){
-   return this.http.delete(this.apiUrl+`api/sermon/${id}`)
+   return this.http.delete(this.apiUrl+`api/sermon/${id}`);
 
   }
 
 
 // sermon Data를 bakcend로부터 받아서 url만 pipe로 가공해준다
   fetchSermons(){
+
    return this.http.get(this.apiUrl+"api/sermon")
       .pipe(map((items:any)=>items.map((item:any)=>{
         item.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(item.iframe);
@@ -235,7 +237,10 @@ export class ContentServiceService {
       })));
 
   }
-
+  // deleteSermon 사용시 subscribe에서 무조건 loadSermons 사용해서 새로 반영된거 업데이트 하자
+  loadSermons(){
+     this.sermonDataStream.next(this.fetchSermons());
+  }
 
 
 
@@ -352,11 +357,17 @@ export class ContentServiceService {
 //   date: '2023-03-21'
 // },
 
+  eventPhotoStream:BehaviorSubject<any> = new BehaviorSubject<any>(this.fetchEventPhoto());
+
   postEventPhoto(data:FormData){
     // const headers = new HttpHeaders()
     //   .set('Content-Type', 'multipart/form-data')
     //   .set('Accept', 'application/json');
     return this.http.post(this.apiUrl+"api/photo",data);
+  }
+
+  loadEventPhoto(){
+    this.sermonDataStream.next(this.fetchSermons());
   }
 
   fetchEventPhoto(){
@@ -368,4 +379,22 @@ export class ContentServiceService {
   }
 
 
+  calendarEventStream:BehaviorSubject<any> = new BehaviorSubject<any>(this.fetchCalendarEvent());
+
+  postCalendarEvent(data:FormData){
+    return this.http.post(this.apiUrl+"api/event",data);
+  }
+
+  fetchCalendarEvent(){
+    return this.http.get(this.apiUrl+"api/event");
+  }
+
+  //데이터 업데이트 되거나 할때 무조건 subscribe function에 load를 넣어줘서 스트림 구독하는 모든 컴포넌트가 업데이트 되게
+  loadCalendarEvent(){
+    this.calendarEventStream.next(this.fetchCalendarEvent());
+  }
+
+  deleteEvent(id: number) {
+    return this.http.delete(this.apiUrl+`api/event/${id}`);
+  }
 }

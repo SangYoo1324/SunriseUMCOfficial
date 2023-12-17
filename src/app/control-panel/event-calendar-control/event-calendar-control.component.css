@@ -1,0 +1,41 @@
+.autopop-wrap{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.time-wrap{
+  display: flex;
+
+}
+
+.time-wrap>p{
+  margin: 0;
+}
+
+select{
+  margin-left: 5px;
+  width: 100px;
+}
+.hour{
+  width: 100px;
+}
+.min{
+  width: 100px;
+}
+.date{
+  width: 330px;
+}
+
+
+/*imageInput 관련 */
+#images{
+  display: none;
+}
+.file-label {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+

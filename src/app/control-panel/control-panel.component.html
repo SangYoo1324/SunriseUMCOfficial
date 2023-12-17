@@ -1,6 +1,5 @@
 <app-page-title #pageTitleComponent></app-page-title>
-<input type="file">
-<section>
+<section class="bg-gray text-white">
 
   <div class="container">
     <button id="logOut" (click)="logOut()">Log Out</button>
@@ -12,7 +11,7 @@
         <label for="iframe" class="form-label" >Youtube Iframe URL</label>
         <input #iframe="ngModel" required ngModel name="iframe" type="text" class="form-control" id="iframe" aria-describedby="iframeHelp">
         <div id="iframeHelp" class="form-text">ex) - https://www.youtube.com/embed/IF0yphO3ERQ</div>
-        <div><small *ngIf="iframe.invalid && iframe.touched">This is required field</small></div>
+        <div><small class="text-white" *ngIf="iframe.invalid && iframe.touched">This is required field</small></div>
       </div>
       <div class="mb-3">
         <label for="title" class="form-label">title</label>
@@ -80,6 +79,8 @@
 
   <app-photo-event-control></app-photo-event-control>
 
+<app-event-calendar-control></app-event-calendar-control>
+<app-event-list></app-event-list>
 <style>
   input.ng-invalid.ng-touched{
     border: red 1px solid;

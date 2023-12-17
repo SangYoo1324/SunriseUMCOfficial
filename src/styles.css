@@ -20,8 +20,8 @@ section{
   font-family: "LotteMartHappyme";
   font-size: 25px;
   color: #1e2125;
-  /*background: #1e2125;*/
-  padding: 5rem 0;
+  background: white;
+  padding: 3rem 0;
   /*background: #1e2125;*/
 }
 
@@ -30,5 +30,27 @@ section{
 
   border-bottom: 2px solid azure;
   cursor: pointer;
+}
+
+
+.fc .fc-col-header-cell-cushion {
+
+  color: black;
+}
+
+.fc .fc-daygrid-day-number {
+  color: black;
+}
+
+:root{
+  --fc-today-bg-color: rgba(155, 50, 0, 0.15);
+  --fc-neutral-text-color: black;
+  --fc-border-color: darkGrey;
+  --bs-link-color-rgb: 255, 0, 0;
+}
+
+
+.bg-gray{
+  background-color: lightgrey;
 }
 

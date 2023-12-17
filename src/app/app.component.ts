@@ -31,6 +31,9 @@ export class AppComponent {
         window.scrollTo(0, 0); // 맨 위로 스크롤
       }
     });
+
+
+
   }
 
  prepareRoute(outlet: RouterOutlet){

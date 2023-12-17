@@ -1,14 +1,18 @@
 <app-page-title #newsActivitiesTitle></app-page-title>
 
-<section>
+<section class="section-bg-white">
   <div class="container">
     <app-section-title #eventCalendarSection></app-section-title>
 
   </div>
-  <app-calendar></app-calendar>
+  <div class="container calendar-wrap">
+    <app-calendar></app-calendar>
+  </div>
 </section>
 
-<section>
+<app-section-separator></app-section-separator>
+
+<section class="section-bg-dark">
   <div class="container">
     <app-section-title #serviceArchiveSection></app-section-title>
   </div>

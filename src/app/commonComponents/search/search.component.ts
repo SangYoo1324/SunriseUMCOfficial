@@ -10,9 +10,16 @@ export class SearchComponent {
 
     @Output()
     inputEvent:EventEmitter<string>= new EventEmitter<string>();
+    @Output()
+    refreshEvent:EventEmitter<any> = new EventEmitter<string>();
 
     inputEventEmitter(){
-
+      if(this.input =="") alert("Please Enter Search Keyword!");
       this.inputEvent.emit( this.input);
+    }
+
+    refreshPageEventEmitter(){
+      this.refreshEvent.emit("");
+      this.input = "";
     }
 }

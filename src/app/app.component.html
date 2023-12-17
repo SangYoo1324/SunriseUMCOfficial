@@ -1,8 +1,12 @@
-<app-header></app-header>
-<main [@routeAnimations]="prepareRoute(outlet)">
-<!--                      outlet이 RouterOutlet 디렉티브의 인스턴스.
-Html Reference인 #outlet을 outlet 디렉티브로 RouterOutlet 인스턴스로 매핑-->
-  <router-outlet #outlet ='outlet'></router-outlet>
-</main>
-<app-footer></app-footer>
+
+  <app-header></app-header>
+
+  <main [@routeAnimations]="prepareRoute(outlet)">
+    <!--                      outlet이 RouterOutlet 디렉티브의 인스턴스.
+    Html Reference인 #outlet을 outlet 디렉티브로 RouterOutlet 인스턴스로 매핑-->
+    <router-outlet #outlet ='outlet'></router-outlet>
+  </main>
+  <app-footer></app-footer>
+
+
 

@@ -1,3 +1,29 @@
 .fc{
-  font-size: 0.5rem;
+  font-size: 1rem;
+  color: black;
+}
+
+.fc-col-header-cell-cushion{
+  color: black;
+}
+
+/*얘네들은 main css에 넣어야 적용되서 main css에 넣어놓음*/
+.fc .fc-col-header-cell-cushion {
+
+  color: black;
+}
+
+.fc .fc-daygrid-day-number {
+  color: black;
+}
+/*얘네들은 main css에 넣어야 적용되서 main css에 넣어놓음*/
+
+
+
+@media (max-width: 767px) {
+
+  .fc{
+    font-size: 0.5rem;
+  }
+
 }
