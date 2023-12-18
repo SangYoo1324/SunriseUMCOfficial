@@ -50,6 +50,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {EventCalendarControlComponent} from "./control-panel/event-calendar-control/event-calendar-control.component";
 import {EventListComponent} from "./control-panel/event-list/event-list.component";
 import {SectionSeparatorComponent} from "./commonComponents/section-separator/section-separator.component";
+import {CommonComponentModuleModule} from "./module/common-component-module.module";
+import {DataRelatedModule} from "./module/data-related/data-related.module";
 
 
 
@@ -57,16 +59,15 @@ import {SectionSeparatorComponent} from "./commonComponents/section-separator/se
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    // HeaderComponent,
     JumbotronComponent,
     VisitorsInfoComponent,
     ChildrenYouthComponent,
     MinistriesComponent,
-    NewsActivitiesComponent,
     IntroComponent,
-    SectionTitleComponent,
+    // SectionTitleComponent,
     CarouselComponent,
-    PageTitleComponent,
+    // PageTitleComponent,
     VisitInfoComponent,
     ContactComponent,
     ChildrenYouthIntroComponent,
@@ -76,38 +77,34 @@ import {SectionSeparatorComponent} from "./commonComponents/section-separator/se
     ContentsBubbleDetailComponent,
     PageNotFoundComponent,
     ExpandingCardComponent,
-    CalendarComponent,
-    SermonArchiveComponent,
-    SermonDetailComponent,
-    FooterComponent,
+
+    // FooterComponent,
     DonationComponent,
-    EventPhotosComponent,
-    SearchComponent,
-    PhotoListComponent,
-    PhotoDetailComponent,
-    ControlPanelComponent,
     LoginComponent,
-    PhotoEventControlComponent
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FullCalendarModule,
-    PaginationModule,
+    // FullCalendarModule,
+    // PaginationModule,
     FormsModule,
     HttpClientModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatDialogModule,
-    EventCalendarControlComponent,
-    EventListComponent,
-    SectionSeparatorComponent
+    // MatPaginatorModule,
+    // MatTableModule,
+    // MatDialogModule,
+    SectionSeparatorComponent,
+
+
+    CommonComponentModuleModule,
+    DataRelatedModule
   ],
   providers: [AdminGuard, ContentServiceService],
   exports: [
-    PageTitleComponent,
-    SectionTitleComponent
+    // PageTitleComponent,
+    // SectionTitleComponent
   ],
   bootstrap: [AppComponent]
 })

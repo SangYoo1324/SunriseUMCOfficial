@@ -4,6 +4,8 @@ import {PageTitleComponent} from "../commonComponents/page-title/page-title.comp
 import {SectionTitleComponent} from "../commonComponents/section-title/section-title.component";
 import {HeaderComponent} from "../header/header.component";
 import {FooterComponent} from "../footer/footer.component";
+import {RouterModule} from "@angular/router";
+import {SectionSeparatorComponent} from "../commonComponents/section-separator/section-separator.component";
 
 
 
@@ -14,10 +16,11 @@ import {FooterComponent} from "../footer/footer.component";
     HeaderComponent,
     FooterComponent,
 
-
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    SectionSeparatorComponent
   ],
   exports:[
     PageTitleComponent,
