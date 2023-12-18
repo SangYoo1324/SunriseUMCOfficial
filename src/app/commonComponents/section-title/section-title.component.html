@@ -8,11 +8,12 @@
 <style>
   .section-title-comp-container{
     width: 95%;
+    position: relative;
   }
 
   .title_comp>*{
     transition: transform 1s ease-in-out;
-    position: relative;
+
   }
 
   .title_comp{
@@ -28,26 +29,29 @@
     color: #ed4848;
   }
 
-  .title_comp::before {
+  .section-title-comp-container::before {
     position: absolute;
     content: "";
     display: block;
-    width: 0.5em; /* 짝대기의 너비를 조절 */
+    width: 0.2em; /* 짝대기의 너비를 조절 */
     height: 120px; /* 짝대기의 높이를 조절 */
-    background-color: black; /* 짝대기의 색상 설정 */
+    background-color: rgba(0,0,0,0.7); /* 짝대기의 색상 설정 */
     margin-right: 1rem; /* 짝대기와 제목 사이의 간격 조절 */
-    left: 5%;
+    left: -1%;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 767px) {
+    h3{ font-size:  1.5rem}
+    h1{font-size: 2rem;
+    }
 
     .section-title-comp-container{
       width: 85%;
     }
-    .title_comp::before {
-      left: 2%;
-      height: 180px;
+    .section-title-comp-container::before {
+      left: -2%;
+      height: 120px;
     }
   }
 </style>
