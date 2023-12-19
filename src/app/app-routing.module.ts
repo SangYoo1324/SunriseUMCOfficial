@@ -8,7 +8,6 @@ import {NewsActivitiesComponent} from "./newsActivities/news-activities/news-act
 import {PageNotFoundComponent} from "./commonComponents/page-not-found/page-not-found.component";
 import {SermonDetailComponent} from "./newsActivities/sermon-detail/sermon-detail.component";
 import {VisitInfoComponent} from "./visitorsInfo/visit-info/visit-info.component";
-import {DonationComponent} from "./donation/donation.component";
 import {EventPhotosComponent} from "./event-photos/event-photos.component";
 import {PhotoDetailComponent} from "./event-photos/photo-detail/photo-detail.component";
 import {ControlPanelComponent} from "./control-panel/control-panel.component";
@@ -22,11 +21,12 @@ const routes: Routes = [
   {path: 'ministries', component: MinistriesComponent},
   {path: 'newsActivities', component: NewsActivitiesComponent},
   {path: 'newsActivities/sermonDetail/:id', component: SermonDetailComponent},
-  {path: 'donation', component: DonationComponent},
+
   {path: 'eventPhotos', component: EventPhotosComponent},
   {path: 'eventPhotos/photoDetail/:id', component: PhotoDetailComponent},
   {path: 'controlPanel', component: ControlPanelComponent, canActivate:[AdminGuard]},
   {path: 'login', component: LoginComponent},
+  { path: 'donation', loadChildren: () => import('./module/donation/donation.module').then(m => m.DonationModule) },
   {path: '**', component: PageNotFoundComponent}
 
 
