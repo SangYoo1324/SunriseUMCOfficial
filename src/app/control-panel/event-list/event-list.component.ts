@@ -36,7 +36,7 @@ export class EventListComponent {
   items:any[] = [];
 
   dataSource:any = new MatTableDataSource<any>(this.items);
-  displayedColumn:String[] = ['id','title', 'date','time','delete'];
+  displayedColumn:String[] = ['id','title', 'date','delete'];
 
 
 

@@ -2,11 +2,11 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {PageTitleComponent} from "../commonComponents/page-title/page-title.component";
 import {map, Observable} from "rxjs";
 import {ContentServiceService} from "../service/content-service.service";
-import {DomSanitizer} from "@angular/platform-browser";
 import {NgForm} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
 import {AuthServiceService} from "../routeGuard/auth-service.service";
 import {Router} from "@angular/router";
+import {MatTableDataSource} from "@angular/material/table";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-control-panel',
@@ -15,23 +15,9 @@ import {Router} from "@angular/router";
 })
 export class ControlPanelComponent {
 
-  //pagination related setting
-  limit:number=10;
-  totalNumber:number= 0;
-  currentPage: number = 1;
-
-  changePage(page: number):void{
-    this.currentPage = page;
-    console.log("current page from parent component::"+this.currentPage);
 
 
-
-  }
-
-  // sermon List related Setting
-  sermonObservable$!:Observable<any>;
-
-  constructor(private contentService:ContentServiceService,private authService:AuthServiceService,private router:Router) {
+  constructor(private sanitizer:DomSanitizer, private contentService:ContentServiceService,private authService:AuthServiceService,private router:Router) {
 
   }
 
@@ -41,10 +27,9 @@ export class ControlPanelComponent {
   }
 
   ngOnInit(){
-    this.fetchSermonsFromComponent();
     // hyms 1개로 시작
     this.addInput();
-
+    this.fetchSermonsFromComponent();
     console.log(this.defaultDate);
   }
 
@@ -85,6 +70,13 @@ export class ControlPanelComponent {
 
   protected readonly onsubmit = onsubmit;
 
+  items:any[] = [];
+  dataSource:any = new MatTableDataSource<any>(this.items);
+  displayedColumn:String[] = ['id','title', 'date','delete'];
+  //paginator related
+  length:number = 0;
+  currentPage = 0;
+
   @ViewChild('myForm') form!:NgForm;
   defaultDate = new Date().toISOString().split('T')[0];
   onSubmit(sermon:{iframe:string,hyms:{id:any |null,value:string}[],date:Date, scripture:string,title:string}){
@@ -100,15 +92,36 @@ export class ControlPanelComponent {
   }
 
   fetchSermonsFromComponent(){
-    // 근본 Object인 service에 있는 오브젝트를  새로고침
-    this.sermonObservable$ =   this.contentService.fetchSermons();
-    // 이건 새로운 subscription으로 sermonObservable 개수만 새로 assign 해주기 위함
-    this.sermonObservable$.pipe(
-      map((items)=>items.length)
-    ).subscribe( (length)=>{
-      this.totalNumber = length;
-    })
+    this.contentService.sermonDataStream
+
+      .subscribe(subj=>{
+          console.log(subj);
+      subj
+        .subscribe((obs:any)=>{
+        this.items = obs;
+        this.sortPage(this.items);
+        this.dataSource.data = this.items;
+        this.length = this.items.length;
+      })
+    });
+
   }
 
+  handlePageEvent(event:any){
+    console.log(event.pageIndex);
+    this.currentPage = event.pageIndex;
+    this.loadPage(event.pageSize,event.pageIndex);
+  }
+
+  loadPage(pageSize:number, pageIdx:number){
+    const startIdx = pageIdx*pageSize;
+    const endIdx  = startIdx+ pageSize;
+    const slicedData = this.items.slice(startIdx,endIdx);
+    this.dataSource.data = slicedData;
+  }
+
+  sortPage(items:any){
+    items.sort((a:any,b:any)=>new Date(b.date).getTime()-new Date(a.date).getTime());
+  }
 
 }

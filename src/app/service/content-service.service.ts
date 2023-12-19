@@ -13,7 +13,7 @@ export class ContentServiceService {
   private prod_apiUrl = prod_environment.apiUrl;
   private dev_apiUrl = dev_environment.apiUrl;
 
-  private apiUrl = this.dev_apiUrl;
+  private apiUrl = this.prod_apiUrl;
 
 
   contentItems:any[] = [
@@ -232,6 +232,7 @@ export class ContentServiceService {
 
    return this.http.get(this.apiUrl+"api/sermon")
       .pipe(map((items:any)=>items.map((item:any)=>{
+        item.date = item.date.slice(0,10);
         item.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(item.iframe);
         return item;
       })));
