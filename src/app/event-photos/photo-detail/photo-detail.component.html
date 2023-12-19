@@ -7,17 +7,24 @@
 <!--    안그럼... 계속 생성이 안됨... ngOnInit()이 observable을 -->
 <!--    백엔드 서버에서 받아오느라 html보다 먼저 실행되버리기 때문에-->
 <div class="outer-wrap container mt-5"  *ngIf="(eventPhotoObject$ | async) as eventPhotoObject">
-  <div class="row title_wrap">
-    <div class="subject">Title</div>
-    <div class="detail">{{eventPhotoObject!.title}}</div>
+  <div class="info-wrap">
+    <div class="row title_wrap">
+      <div class="subject">Title</div>
+      <div class="detail">{{eventPhotoObject!.title}}</div>
+    </div>
+    <div class="row title_wrap">
+      <div class="subject">Poster</div>
+      <div class="detail">Sunrise UMC</div>
+    </div>
+    <div class="row title_wrap">
+      <div class="subject">Date</div>
+      <div class="detail">{{eventPhotoObject!.date | date:'MMM d, y'}}</div>
+    </div>
+
   </div>
-  <div class="row title_wrap">
-    <div class="subject">Poster</div>
-    <div class="detail">Sunrise UMC</div>
-  </div>
+
   <div class="row date_wrap">
-    <div class="subject">Date</div>
-    <div class="detail">{{eventPhotoObject!.date | date:'MMM d, y'}}</div>
+
 
     <div class="photos">
       <img  *ngFor="let image of eventPhotoObject!.cloudinaryUrl" [src]="image" alt="">
@@ -64,12 +71,15 @@
   }
 
   .outer-wrap{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     margin-bottom: 2rem;
     border-radius: 0.3rem;
+    background:linear-gradient(to left, rgba(255,255,255,0.2),rgba(255,255,255,.7)), url('/assets/photo_detail2.jpg');
+    background-size: cover;
+    padding: 2rem;
   }
   .title_wrap{
-    border-bottom: 1px solid black;
+    /*border-bottom: 1px solid black;*/
     font-size: 1.5rem;
     font-weight: bold;
   }
@@ -81,7 +91,7 @@
 
   .subject{
     width: 30%;
-    background-color: darkgrey;
+    box-shadow: 0 2px 2px black;
     text-align: center;
   }
   .detail{
@@ -93,7 +103,7 @@
   .photos{
     padding: 2rem 2rem;
     text-align: center;
-    border-top: 1px solid black;
+    /*border-top: 1px solid black;*/
   }
 
   img {

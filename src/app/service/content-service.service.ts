@@ -13,7 +13,7 @@ export class ContentServiceService {
   private prod_apiUrl = prod_environment.apiUrl;
   private dev_apiUrl = dev_environment.apiUrl;
 
-  private apiUrl = this.prod_apiUrl;
+  private apiUrl = this.dev_apiUrl;
 
 
   contentItems:any[] = [
@@ -390,6 +390,7 @@ export class ContentServiceService {
   }
 
   //데이터 업데이트 되거나 할때 무조건 subscribe function에 load를 넣어줘서 스트림 구독하는 모든 컴포넌트가 업데이트 되게
+
   loadCalendarEvent(){
     this.calendarEventStream.next(this.fetchCalendarEvent());
   }
@@ -397,4 +398,9 @@ export class ContentServiceService {
   deleteEvent(id: number) {
     return this.http.delete(this.apiUrl+`api/event/${id}`);
   }
+
+
+
+
+
 }
