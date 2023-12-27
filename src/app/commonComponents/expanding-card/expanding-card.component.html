@@ -3,8 +3,8 @@
 <div class="title-row"></div>
 
 
-
-<div class="row" >
+<div class="container no-margin-container">
+  <div class="row big-wrap">
 
     <div class="card mb-4 m-2" style="max-width: 540px;" *ngFor="let content of contentArray let i = index">
       <div class="card-wrap row g-0">
@@ -21,15 +21,15 @@
           </div>
 
         </div>
+
         <div class="detail"  [@animate_transparency]="{value: i === currentIndex} ">
-          <p *ngIf="currentIndex === i">
+          <p>
             {{content.detail}}
           </p>
-
-          <div class="xMark"
+          <div class="xMark"  *ngIf="{value: i === currentIndex}"
                (click)="xButtonClick()"><i class="fa-solid fa-circle-xmark"></i></div>
+        </div>
       </div>
-      </div>
 
 
 
@@ -37,6 +37,8 @@
 
 
 
+    </div>
+
+  </div>
 </div>
 
-</div>

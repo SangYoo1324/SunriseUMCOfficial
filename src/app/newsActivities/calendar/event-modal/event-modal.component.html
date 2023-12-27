@@ -6,12 +6,15 @@
     <img [src]="data.cloudinaryUrl"  alt="">
   </div>
   <div class="container">
-    <p>{{data.date}}</p>
-    <p>{{data.time}}</p>
+    <div class="bar"></div>
+    <p>Date: &nbsp;{{data.date}}</p>
+    <p>Time: &nbsp; {{data.time}}</p>
+    <div class="bar"></div>
     <p>{{data.description}}</p>
   </div>
 </mat-dialog-content>
 
 <mat-dialog-actions>
+  <div class="bar"></div>
   <button mat-button mat-dialog-close>Close</button>
 </mat-dialog-actions>

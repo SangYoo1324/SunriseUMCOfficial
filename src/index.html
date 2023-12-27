@@ -5,9 +5,8 @@
   <title>SunriseUMC</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="assets/gmc_favicon.ico">
   <script src="https://kit.fontawesome.com/edff7358ca.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://fonts/googleapis.com/icon?family=Material+Icons">
   <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
 </head>
 <body class="base-bg body-margin">
@@ -53,8 +52,22 @@
 
   }
 
-  .fc-event-main-frame{
+  .fc{
+    font-size: 0.7rem;
+  }
+  .fc-event-title{
+    font-size: 1rem;
+  }
+
+  .fc-event-main{
     background-color: rgba(125,195,203,0.2);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    cursor: pointer;
+  }
+  .fc-event-main:hover{
+    background-color: white;
+    color: black;
   }
 
   .fc-event-title-container{
@@ -84,6 +97,20 @@
 
   :root{
     --section-bg: #f2fe8a;
+  }
+
+
+  @media (max-width: 768px) {
+    .fc-event-title-container{
+      height: 0.7rem;
+      /*margin: 0.2rem auto;*/
+      text-align: center;
+    }
+
+    .fc-event-title{
+      font-size: 0.7rem;
+    }
+
   }
 
 </style>

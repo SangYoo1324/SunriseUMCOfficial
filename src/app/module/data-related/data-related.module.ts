@@ -24,6 +24,7 @@ import {
 import {EventListComponent} from "../../control-panel/event-list/event-list.component";
 import {FullCalendarModule} from "@fullcalendar/angular";
 import {SectionSeparatorComponent} from "../../commonComponents/section-separator/section-separator.component";
+import {VariousContentsComponent} from "../../newsActivities/various-contents/various-contents.component";
 
 
 
@@ -41,20 +42,21 @@ import {SectionSeparatorComponent} from "../../commonComponents/section-separato
     PhotoDetailComponent,
     ControlPanelComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatDialogModule,
-    CommonComponentModuleModule,
-    EventCalendarControlComponent,
-    EventListComponent,
-    FullCalendarModule,
-    SectionSeparatorComponent
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        MatPaginatorModule,
+        MatTableModule,
+        MatDialogModule,
+        CommonComponentModuleModule,
+        EventCalendarControlComponent,
+        EventListComponent,
+        FullCalendarModule,
+        SectionSeparatorComponent,
+        VariousContentsComponent
 
-  ],
+    ],
   providers: [AdminGuard, ContentServiceService],
 })
 export class DataRelatedModule { }

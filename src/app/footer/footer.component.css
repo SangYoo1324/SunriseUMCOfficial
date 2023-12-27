@@ -2,6 +2,7 @@
 .footer-con{
   display: flex;
   background-color: #000000;
+
 }
 
 .footer_logo_wrap{
@@ -82,6 +83,7 @@ li{
   }
 
   .footer-con{
+    height: 90vh;
     display: block;
   }
   iframe{
@@ -99,6 +101,13 @@ li{
   .direction_wrap>h1{
     padding: 10px 40px;
     width: 50%;
+  }
+
+  iframe{
+
+  padding-bottom: 0;
+
+
   }
 
 }

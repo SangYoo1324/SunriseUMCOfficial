@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'eventPhotos/photoDetail/:id', component: PhotoDetailComponent},
   {path: 'controlPanel', component: ControlPanelComponent, canActivate:[AdminGuard]},
   {path: 'login', component: LoginComponent},
-  { path: 'donation', loadChildren: () => import('./module/donation/donation.module').then(m => m.DonationModule) },
+  { path: 'donation', loadChildren: () => import('./donation/donation.module').then(m => m.DonationModule) },
   {path: '**', component: PageNotFoundComponent}
 
 
