@@ -28,7 +28,9 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-
+    <ng-container *ngIf="isLoading">
+      <app-loading-mark></app-loading-mark>
+    </ng-container>
     <mat-paginator
       [length] = "length"
       [pageSize]="10"

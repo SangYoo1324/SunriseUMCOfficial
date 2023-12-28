@@ -16,9 +16,7 @@ export class CarouselComponent implements AfterViewInit{
   @Input() subTitleColor = '#ffbb33';
   selectedIndex = 1;
   ngOnInit() {
-    if(this.autoSlide){
-      this.autoslideImages();
-    }
+
   }
 
   autoslideImages():void{
@@ -48,6 +46,9 @@ export class CarouselComponent implements AfterViewInit{
   }
 
   ngAfterViewInit(): void {
+    if(this.autoSlide){
+      this.autoslideImages();
+    }
   }
 
 

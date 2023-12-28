@@ -19,7 +19,7 @@ export class SermonArchiveComponent {
   //pagination related setting
   length:number = 0;
 
-
+  isLoading:boolean = true;
 
   sermonObservable$!:Observable<any>;
    url!:SafeResourceUrl;
@@ -34,6 +34,7 @@ export class SermonArchiveComponent {
         this.length = obs.length;
         this.items = obs;
       this.datasource.data = this.items;
+      this.isLoading= false;
       });
     });
 

@@ -2,10 +2,12 @@
   <div class="container">
     <app-section-title #sectionTitleComponent></app-section-title>
     <div class="row">
+      <ng-container  *ngIf="isLoading">
+     <app-loading-mark></app-loading-mark>
+      </ng-container>
       <div class="left col-lg-6">
 
-
-        <iframe width="100%" height="350px"    [src]="(sermonObservable$ | async)?.iframe" title="Build Angular Pagination Without a Library" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="100%" height="350px"    [src]="(recentSermon$ | async)?.iframe" title="Build Angular Pagination Without a Library" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
         <div class="pastor-intro card mb-3" style="max-width: 540px; margin-top: 2rem">
@@ -51,12 +53,12 @@
           <div class="nav_group">
             <div class="row nav_wrap">
 <!--              <div class="group">-->
-                <div class="location nav_item" (click)="goTo('visitorsInfo')">
+                <div class="location nav_item" (click)="goTo('visitorsInfo', 'navPoint')">
                   <div class="text_wrap">
                     <div class="txt">Location</div> <i class="fa-solid fa-location-dot"></i>
                   </div>
                 </div>
-                <div class="weekly_news nav_item" (click)="goTo('newsActivities')">
+                <div class="weekly_news nav_item" (click)="goTo('newsActivities', 'navPoint')">
                   <div class="text_wrap">
                     <div class="txt">News & Events</div> <i class="fa-solid fa-newspaper"></i>
                   </div>
@@ -80,6 +82,11 @@
                     <div>Photos</div><i class="fa-solid fa-camera"></i>
                   </div>
                 </div>
+              <div class="contact nav_item" routerLink="/eventPhotos" (click)="goTo('visitorsInfo','Contact')">
+                <div class="text_wrap">
+                  <div>Contact</div><i class="fa-solid fa-phone"></i>
+                </div>
+              </div>
 
 <!--              </div>-->
             </div>

@@ -34,6 +34,9 @@ import { LoginComponent } from './login/login.component';
 import {SectionSeparatorComponent} from "./commonComponents/section-separator/section-separator.component";
 import {CommonComponentModuleModule} from "./module/common-component-module.module";
 import {DataRelatedModule} from "./module/data-related/data-related.module";
+import {PageTitleComponent} from "./commonComponents/page-title/page-title.component";
+import {SectionTitleComponent} from "./commonComponents/section-title/section-title.component";
+import {LoadingMarkComponent} from "./commonComponents/loading-mark/loading-mark.component";
 
 
 
@@ -48,14 +51,13 @@ import {DataRelatedModule} from "./module/data-related/data-related.module";
     MinistriesComponent,
     IntroComponent,
     // SectionTitleComponent,
-    CarouselComponent,
+    // CarouselComponent,
     // PageTitleComponent,
     VisitInfoComponent,
     ContactComponent,
     ChildrenYouthIntroComponent,
     YouthContentsComponent,
     RightIntroSectionComponent,
-    ContentsBubbleComponent,
     ContentsBubbleDetailComponent,
     PageNotFoundComponent,
     ExpandingCardComponent,
@@ -78,13 +80,15 @@ import {DataRelatedModule} from "./module/data-related/data-related.module";
     // MatTableModule,
     // MatDialogModule,
     SectionSeparatorComponent,
-
+    ContentsBubbleComponent,
 
     CommonComponentModuleModule,
-    DataRelatedModule
+    DataRelatedModule,
+    LoadingMarkComponent
   ],
   providers: [AdminGuard, ContentServiceService],
   exports: [
+    // ContentsBubbleComponent,
     // PageTitleComponent,
     // SectionTitleComponent
   ],

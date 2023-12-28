@@ -6,6 +6,7 @@ import {HeaderComponent} from "../header/header.component";
 import {FooterComponent} from "../footer/footer.component";
 import {RouterModule} from "@angular/router";
 import {SectionSeparatorComponent} from "../commonComponents/section-separator/section-separator.component";
+import {CarouselComponent} from "../commonComponents/carousel/carousel.component";
 
 
 
@@ -15,18 +16,21 @@ import {SectionSeparatorComponent} from "../commonComponents/section-separator/s
     SectionTitleComponent,
     HeaderComponent,
     FooterComponent,
+    CarouselComponent
 
   ],
   imports: [
     CommonModule,
     RouterModule,
-    SectionSeparatorComponent
+    SectionSeparatorComponent,
+
   ],
   exports:[
     PageTitleComponent,
     SectionTitleComponent,
     HeaderComponent,
     FooterComponent,
+    CarouselComponent
   ]
 })
 export class CommonComponentModuleModule { }

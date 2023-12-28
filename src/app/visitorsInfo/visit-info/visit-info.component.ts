@@ -17,9 +17,11 @@ export class VisitInfoComponent {
     }
 
     ngAfterViewInit(){
-      this.sectionTitleComponent.title.nativeElement.textContent = "Ways to visit Sunrise UMC!";
-      this.sectionTitleComponent.subTitle.nativeElement.textContent = "Ways to visit Sunrise UMC!";
-      console.log(this.activatedRoute.snapshot.fragment);
+      setTimeout(()=>{
+        this.sectionTitleComponent.title.nativeElement.textContent = "Ways to visit Sunrise UMC!";
+        this.sectionTitleComponent.subTitle.nativeElement.textContent = "Ways to visit Sunrise UMC!";
+        console.log(this.activatedRoute.snapshot.fragment);
+      });
 
     }
 }
