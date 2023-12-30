@@ -1,21 +1,33 @@
-<section id="jumbotron" #jumbotron>
+<div id="jumbotron" #jumbotron>
+
+
+  <video [autoplay]="true" [muted]="true" [loop]="true" src="/assets/sample2.mp4">
+  </video>
   <div
-    [@animate_transparency]="{value: isViewDetailsTriggered}"
-    class="container jumbotron_text_box">
+    class="jumbotron_text_box">
     <div class="wrap">
-      <h2>SUNRISE CHRIST COMMUNITY CHURCH</h2>
-      <h2>"Blessings to you all in the Powerful and Loving Name of Jesus"</h2>
-      <p>WELCOME TO SUNRISE UNITED METHODIST CHURCH WHERE WE “SHARE GOD’S SHINING LIGHT”, WHICH IS FOUND IN JESUS CHRIST (JOHN 8:12)</p>
+      <div class="text-wrap">
+        <h2>SUNRISE CHRIST COMMUNITY CHURCH</h2>
+        <h5>"Blessings to you all in the Powerful and Loving Name of Jesus"</h5>
+      </div>
       <p></p>
       <div class="btn_wrap">
-        <a class="Btn_link" routerLink="/visitorsInfo" >Go & Plan for Visit &nbsp;<b> > </b></a>
-        <a class="Btn_link" routerLink="/newsActivities/sermonDetail/1" >Recent Sunday Service &nbsp;<b> > </b></a>
+        <a class="Btn_link" routerLink="/visitorsInfo" >Plan for Visit &nbsp;<b> > </b></a>
+        <a class="Btn_link" routerLink="/newsActivities/sermonDetail/1" >Sunday Service &nbsp;<b> > </b></a>
       </div>
     </div>
 
   </div>
 
   <div class="mouse"> <i class=" fa-solid fa-computer-mouse"></i></div>
-</section>
+</div>
 
 <app-intro></app-intro>
+
+<style>
+  video{
+    position: relative;
+    width: 100%;
+    z-index: 0;
+  }
+</style>

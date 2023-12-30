@@ -20,10 +20,11 @@ export class JumbotronComponent {
   constructor(private renderer:Renderer2) {
   }
 
-  ngOnInit(){
+  @ViewChild('video') video!:ElementRef;
 
 
-  }
+
+
 
   // snowFlake related
   MIN_DURATION:number = 10000;
@@ -56,14 +57,28 @@ export class JumbotronComponent {
   isViewDetailsTriggered: boolean = false;
 
   ngAfterViewInit(){
-    for(let i=0; i<200; i++){
-      this.makeSnowFlake();
-    }
+    // for(let i=0; i<200; i++){
+    //   this.makeSnowFlake();
+    // }
+
+    console.log("Video Element?"+(this.video.nativeElement instanceof HTMLVideoElement));
+
+    setTimeout(()=>{
+      this.video.nativeElement.play()
+        .then(() => {
+          console.log('Video playback started successfully');
+        })
+        .catch((error:any) => {
+          console.error('Error starting video playback:', error);
+        });
+    }, 1000);
 
     setTimeout(()=>{
       this.isViewDetailsTriggered = true;
     },500);
 
   }
+
+
 
 }
