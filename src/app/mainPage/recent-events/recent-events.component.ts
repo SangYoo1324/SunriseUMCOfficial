@@ -23,8 +23,9 @@ export class RecentEventsComponent {
       end: '05-18-2024',
       info: "          Come Join us as we dig deeper into God's Word in our Adult Bible Study class. We meet at our church, Sunrise Christ Community Church,\n" +
         "                    weekly on Saturday, at 2:30 pm-4pm.\n" +
-        "                    Our current series on the book of Genesis will run until May 18. We're using the book \"Life Lessons from Genesis\" by Max Lucado as our guide.\n" +
+        "                    Our current series on the book of Genesis will run until May 18. We're using the text \"Life Lessons from Genesis\" by Max Lucado as our guide.\n" +
         "                    For more info, contact Pastor Jim Mozley at pastorjim@sunrisechristcc.org"},
+
   ];
 
 

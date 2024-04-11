@@ -49,10 +49,27 @@ small{
   color: red;
 }
 
+.title-content-wrap{
+  display: block;
+  justify-content: center;
+}
+.title-content-wrap>*{
+  margin-right: 0.5rem;
+}
+
 @media (max-width: 1024px) {
 
   .left{
     margin-bottom: 2rem;
+  }
+  h4{
+    font-size: 1rem;
+  }
+  h5{
+    font-size: 1rem;
+  }
+  .title-content-wrap{
+    display: flex;
   }
 }
 

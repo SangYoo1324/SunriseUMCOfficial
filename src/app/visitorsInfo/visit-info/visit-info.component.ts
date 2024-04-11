@@ -18,8 +18,8 @@ export class VisitInfoComponent {
 
     ngAfterViewInit(){
       setTimeout(()=>{
-        this.sectionTitleComponent.title.nativeElement.textContent = "Ways to visit Sunrise Christ CC!";
-        this.sectionTitleComponent.subTitle.nativeElement.textContent = "Ways to visit Sunrise Christ CC!";
+        this.sectionTitleComponent.title.nativeElement.textContent = "Things to know about Sunrise Christ CC & ways to come visit us\"";
+        // this.sectionTitleComponent.subTitle.nativeElement.textContent = ";
         console.log(this.activatedRoute.snapshot.fragment);
       });
 

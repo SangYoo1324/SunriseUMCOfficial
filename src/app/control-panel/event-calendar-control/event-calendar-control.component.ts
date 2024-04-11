@@ -1,6 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {AppModule} from "../../app.module";
-import {FormsModule} from "@angular/forms";
+import {FormGroup, FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {ContentServiceService} from "../../service/content-service.service";
 import {MatTableModule} from "@angular/material/table";
@@ -20,6 +20,8 @@ import {MatTableModule} from "@angular/material/table";
 export class EventCalendarControlComponent {
   @ViewChild("fileInput") fileInput!: ElementRef<HTMLInputElement>;
 
+
+
   constructor(private contentService:ContentServiceService) {
   }
   ngOnInit() {
@@ -32,7 +34,7 @@ export class EventCalendarControlComponent {
   min = '00';
   ampm = 'AM';
   photoInput!: (FileList | null);
-
+  selectedEventType: number = 1;
   onSubmit(values: any) {
     console.log(values);
     console.log(this.fileInput.nativeElement.value);
@@ -47,12 +49,36 @@ export class EventCalendarControlComponent {
     formDataToSend.append("time", formattedTime);
     if(this.fileInput != null){
       formDataToSend.append('file', this.photoInput![0]);
-      this.contentService.postCalendarEvent(formDataToSend)
-        .subscribe((res)=>{
-          this.contentService.loadCalendarEvent();
-          alert("successfully uploaded");
-        });
-      // logic to transfer data to backend server
+      switch(this.selectedEventType){
+        case 1: {
+          this.contentService.postCalendarEvent(formDataToSend)
+            .subscribe((res)=>{
+              this.contentService.loadCalendarEvent();
+              alert("successfully uploaded");
+            });
+          // logic to transfer data to backend server
+          break;
+        }
+        case 2: {
+          this.contentService.postWeeklyRecurringCalendarEvent(formDataToSend)
+            .subscribe((res)=>{
+              this.contentService.loadCalendarEvent();
+              alert("successfully uploaded Weekly Recurring Event");
+            });
+          break;
+        }
+        case 3:{
+          this.contentService.postMonthlyRecurringCalendarEvent(formDataToSend)
+            .subscribe((res)=>{
+              this.contentService.loadCalendarEvent();
+              alert("successfully uploaded Monthly Recurring Event");
+            });
+          break;
+        }
+
+      }
+
+
 
     }else{
       alert("Event Picture hasn't been uploaded");
@@ -65,9 +91,6 @@ export class EventCalendarControlComponent {
     console.log(this.inputDate.nativeElement.value);
   }
 
-  sundayServiceContent() {
-
-  }
 
   //just programatically clicking the invisible acutal
   // upload button

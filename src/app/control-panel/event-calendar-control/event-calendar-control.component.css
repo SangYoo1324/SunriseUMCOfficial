@@ -13,9 +13,17 @@
   margin: 0;
 }
 
+.input-group-submit{
+  display: flex;
+  justify-content: space-between;
+}
 select{
+  border: none;
+  outline: none;
   margin-left: 5px;
-  width: 100px;
+  width: 300px;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 .hour{
   width: 100px;

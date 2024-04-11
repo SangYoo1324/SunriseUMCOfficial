@@ -24,7 +24,7 @@
         <input class="min form-control" type="number" name="min"
                min="0" max="59" ngModel required
                [(ngModel)]="min">
-        <select [(ngModel)]="ampm" required  class="form-control ampm"  name="ampm">
+        <select name="type" [(ngModel)]="ampm" required  class="form-control ampm"  name="ampm">
           <option value="AM">AM</option>
           <option value="PM">PM</option>
         </select>
@@ -45,17 +45,21 @@
           <button type="button" (click)="upload()">upload</button>
         </label>
       </div>
-      <button
 
-        type="submit" class="btn btn-primary" [disabled]="!myForm.valid && (photoInput===undefined)" >Submit</button>
+      <div class="input-group-submit">
+        <select [(ngModel)]="selectedEventType" ngModel required name="eventType">
+          <option [ngValue]="1" > Non Recurring Event</option>
+          <option [ngValue]="2">Weekly Recurring Event</option>
+          <option [ngValue]="3">Monthly Recurring Event</option>
+        </select>
+        <button
+          type="submit" class="btn btn-primary" [disabled]="!myForm.valid && (photoInput===undefined)" >Submit</button>
+      </div>
+
 
     </form>
 
     <div class="autopop-wrap">
-      <button id="autoGenerate-btn"
-              (click)="sundayServiceContent()"
-              class="btn btn-primary">Auto Generate Sunday Service Form</button>
-      <p><small> * This button will autopopulate Title, Description & picture for sunday Service</small></p>
     </div>
 
   </div>

@@ -22,7 +22,7 @@
                 <div *ngFor="let image of three_recent_event; let i = index" class="wrap">
 
                   <div class="title">
-                    <h3>Adult Bible School</h3>
+                    <h3>{{image.title}}</h3>
                   </div>
                   <div class="day-occurance">
                     <h5>{{image.date}} ~ {{image.end}}</h5>
@@ -30,10 +30,9 @@
                   </div>
 
                   <p>
-                    Come Join us as we dig deeper into God's Word in our Adult Bible Study class. We meet at our church, Sunrise Christ Community Church,
-                    weekly on Saturday, at 2:30 pm-4pm.
-                    Our current series on the book of Genesis will run until May 18. We're using the book "Life Lessons from Genesis" by Max Lucado as our guide.
-                    For more info, contact Pastor Jim Mozley at pastorjim&#64;sunrisechristcc.org
+                    {{
+                    image.info
+                    }}
                   </p>
 
                 </div>

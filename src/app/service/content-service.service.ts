@@ -386,6 +386,14 @@ export class ContentServiceService {
     return this.http.post(this.apiUrl+"api/event",data);
   }
 
+  postWeeklyRecurringCalendarEvent(data:FormData){
+    return this.http.post(this.apiUrl+"api/event/recurring/weekly",data);
+  }
+
+  postMonthlyRecurringCalendarEvent(data:FormData){
+    return this.http.post(this.apiUrl+"api/event/recurring/monthly",data);
+  }
+
   fetchCalendarEvent(){
     return this.http.get(this.apiUrl+"api/event");
   }
