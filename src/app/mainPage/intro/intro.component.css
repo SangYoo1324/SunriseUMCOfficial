@@ -6,7 +6,7 @@
 }
 
 .pastor-intro{
-
+  width: 100%;
 }
 
 .wrap{
@@ -28,6 +28,10 @@
 
 .card-body{
   font-size: 15px;
+}
+
+.card-text{
+  font-size: 11px;
 }
 
 
@@ -133,6 +137,11 @@ span{
 /*nav_group:end */
 
 @media (max-width: 1386px) {
+
+  .card-text{
+    font-size: 11px;
+  }
+
   .nav_wrap{
     width: 100%;
   }

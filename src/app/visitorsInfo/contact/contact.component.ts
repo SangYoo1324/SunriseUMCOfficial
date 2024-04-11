@@ -1,12 +1,20 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {PageTitleComponent} from "../../commonComponents/page-title/page-title.component";
 import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
-import {NgForm} from "@angular/forms";
+import {FormsModule, NgForm} from "@angular/forms";
 import {ContentServiceService} from "../../service/content-service.service";
+import {CommonComponentModuleModule} from "../../module/common-component-module.module";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-contact',
+  standalone: true,
   templateUrl: './contact.component.html',
+  imports: [
+    CommonComponentModuleModule,
+    FormsModule,
+    NgIf
+  ],
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {

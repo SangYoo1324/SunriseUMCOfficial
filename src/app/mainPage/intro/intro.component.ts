@@ -53,13 +53,13 @@ export class IntroComponent {
   }
 
   ngAfterViewInit(){
-    this.sectionTitleComponent.subTitle.nativeElement.textContent = "Hello All! this is Subtitle";
-    this.sectionTitleComponent.title.nativeElement.textContent = "this is Title";
+    this.sectionTitleComponent.subTitle.nativeElement.textContent = "Hello, Welcome to Sunrise Christ Community Church!";
+    this.sectionTitleComponent.title.nativeElement.textContent = "You will find Jesus Here!";
   }
 
   goTo(target:string, fragment:string){
-    this.router.navigate([`/${target}`], {fragment: fragment})
-
+    this.scrollService.goTo(target, fragment);
   }
+
 
 }

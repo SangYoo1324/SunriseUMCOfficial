@@ -83,7 +83,7 @@ li{
   }
 
   .footer-con{
-    height: 90vh;
+    height: 85vh;
     display: block;
   }
   iframe{
@@ -104,11 +104,9 @@ li{
   }
 
   iframe{
-
   padding-bottom: 0;
-
-
   }
+
 
 }
 /*mobile mode:end */

@@ -21,7 +21,11 @@ export class ScrollServiceService {
   }
 
 
+  goTo(target:string, fragment:string){
+    console.log(fragment);
+    this.router.navigate([`/${target}`], {fragment: fragment})
 
+  }
 
 
 

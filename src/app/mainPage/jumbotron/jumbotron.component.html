@@ -1,7 +1,7 @@
 <div id="jumbotron" #jumbotron>
 
 
-  <video [autoplay]="true" [muted]="true" [loop]="true" src="/assets/sample2.mp4">
+  <video [autoplay]="true" [muted]="true" [loop]="true" src="/assets/sample2%20(1).mp4">
   </video>
   <div
     class="jumbotron_text_box">
@@ -10,10 +10,9 @@
         <h2>SUNRISE CHRIST COMMUNITY CHURCH</h2>
         <h5>"Blessings to you all in the Powerful and Loving Name of Jesus"</h5>
       </div>
-      <p></p>
       <div class="btn_wrap">
         <a class="Btn_link" routerLink="/visitorsInfo" >Plan for Visit &nbsp;<b> > </b></a>
-        <a class="Btn_link" routerLink="/newsActivities/sermonDetail/1" >Sunday Service &nbsp;<b> > </b></a>
+        <a class="Btn_link" (click)="goTo('newsActivities','SermonList')" >Sunday Service &nbsp;<b> > </b></a>
       </div>
     </div>
 
@@ -23,6 +22,8 @@
 </div>
 
 <app-intro></app-intro>
+
+<app-recent-events></app-recent-events>
 
 <style>
   video{

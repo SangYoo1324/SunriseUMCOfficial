@@ -1,5 +1,7 @@
 import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {ScrollServiceService} from "../../service/scroll-service.service";
+
 
 @Component({
   selector: 'app-jumbotron',
@@ -17,12 +19,15 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 export class JumbotronComponent {
 
   @ViewChild('jumbotron') jumbotron!:ElementRef;
-  constructor(private renderer:Renderer2) {
+  constructor(private renderer:Renderer2, private scrollService:ScrollServiceService) {
   }
 
   @ViewChild('video') video!:ElementRef;
 
 
+  goTo(target:string, fragment:string){
+    this.scrollService.goTo(target, fragment);
+  }
 
 
 
@@ -63,22 +68,21 @@ export class JumbotronComponent {
 
     console.log("Video Element?"+(this.video.nativeElement instanceof HTMLVideoElement));
 
-    setTimeout(()=>{
-      this.video.nativeElement.play()
-        .then(() => {
-          console.log('Video playback started successfully');
-        })
-        .catch((error:any) => {
-          console.error('Error starting video playback:', error);
-        });
-    }, 1000);
+    // setTimeout(()=>{
+    //   this.video.nativeElement.play()
+    //     .then(() => {
+    //       console.log('Video playback started successfully');
+    //     })
+    //     .catch((error:any) => {
+    //       console.error('Error starting video playback:', error);
+    //     });
+    // }, 1000);
 
     setTimeout(()=>{
       this.isViewDetailsTriggered = true;
     },500);
 
   }
-
 
 
 }

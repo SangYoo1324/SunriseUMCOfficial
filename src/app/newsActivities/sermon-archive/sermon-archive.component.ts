@@ -33,6 +33,7 @@ export class SermonArchiveComponent {
         console.log("sermonDataStream "+obs.length);
         this.length = obs.length;
         this.items = obs;
+        this.sortSermon(this.items);
       this.datasource.data = this.items;
       this.isLoading= false;
       });
@@ -50,22 +51,7 @@ export class SermonArchiveComponent {
   }
 
   items:any[] = [
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'},
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'},
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'},
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'},
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'},
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'},
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'},
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'},
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'},
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'},
-// {id: 1, title:'titleaaaa', date:'11-11-2023'},
-// {id: 1, title:'titleaaaa', date:'11-11-2023'},
-// {id: 1, title:'titleaaaa', date:'11-11-2023'},
-// {id: 1, title:'titleaaaa', date:'11-11-2023'},
-// {id: 1, title:'titleaaaa', date:'11-11-2023'},
-//     {id: 1, title:'titleaaaa', date:'11-11-2023'}
+
   ];
 
   datasource:any= new MatTableDataSource<any>(this.items);
@@ -93,4 +79,7 @@ export class SermonArchiveComponent {
     this.router.navigate(['newsActivities/sermonDetail/'+page]);
   }
 
+  sortSermon(items:any){
+    items.sort((a:any,b:any)=>new Date(b.date).getTime()-new Date(a.date).getTime());
+  }
 }

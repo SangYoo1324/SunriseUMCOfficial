@@ -3,19 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import {JumbotronComponent} from "./mainPage/jumbotron/jumbotron.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { VisitorsInfoComponent } from './visitorsInfo/visitors-info/visitors-info.component';
 import { ChildrenYouthComponent } from './childrenYouth/children-youth/children-youth.component';
 import { MinistriesComponent } from './ministries/ministries/ministries.component';
-
 import { IntroComponent } from './mainPage/intro/intro.component';
-
-import { CarouselComponent } from './commonComponents/carousel/carousel.component';
-
 import { VisitInfoComponent } from './visitorsInfo/visit-info/visit-info.component';
-import { ContactComponent } from './visitorsInfo/contact/contact.component';
+
 import { ChildrenYouthIntroComponent } from './childrenYouth/children-youth-intro/children-youth-intro.component';
 import { YouthContentsComponent } from './childrenYouth/youth-contents/youth-contents.component';
 import { RightIntroSectionComponent } from './commonComponents/right-intro-section/right-intro-section.component';
@@ -37,6 +32,8 @@ import {DataRelatedModule} from "./module/data-related/data-related.module";
 import {PageTitleComponent} from "./commonComponents/page-title/page-title.component";
 import {SectionTitleComponent} from "./commonComponents/section-title/section-title.component";
 import {LoadingMarkComponent} from "./commonComponents/loading-mark/loading-mark.component";
+import {RecentEventsComponent} from "./mainPage/recent-events/recent-events.component";
+import {ContactComponent} from "./visitorsInfo/contact/contact.component";
 
 
 
@@ -54,7 +51,6 @@ import {LoadingMarkComponent} from "./commonComponents/loading-mark/loading-mark
     // CarouselComponent,
     // PageTitleComponent,
     VisitInfoComponent,
-    ContactComponent,
     ChildrenYouthIntroComponent,
     YouthContentsComponent,
     RightIntroSectionComponent,
@@ -84,14 +80,17 @@ import {LoadingMarkComponent} from "./commonComponents/loading-mark/loading-mark
 
     CommonComponentModuleModule,
     DataRelatedModule,
-    LoadingMarkComponent
+    LoadingMarkComponent,
+    RecentEventsComponent,
+    ContactComponent
   ],
   providers: [AdminGuard, ContentServiceService],
-  exports: [
-    // ContentsBubbleComponent,
-    // PageTitleComponent,
-    // SectionTitleComponent
-  ],
+    exports: [
+        JumbotronComponent,
+        // ContentsBubbleComponent,
+        // PageTitleComponent,
+        // SectionTitleComponent
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
