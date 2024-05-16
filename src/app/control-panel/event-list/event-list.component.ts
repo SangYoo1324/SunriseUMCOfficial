@@ -11,8 +11,66 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatTableModule,
     MatPaginatorModule
   ],
-  templateUrl: './event-list.component.html',
-  styleUrl: './event-list.component.css'
+  template:`
+    <section>
+
+      <div class="container">
+        <h1>Event Calendar</h1>
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Title</th>
+            <td mat-cell *matCellDef="let element">{{element.title}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Date</th>
+            <td mat-cell *matCellDef="let element">{{element.date}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef> Time</th>
+            <td mat-cell *matCellDef="let element">{{element.time}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Delete</th>
+            <td mat-cell *matCellDef="let element">
+              <button class="btn btn-danger delete-btn" (click)="deleteEvent(element.id)"> Delete</button></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+          <tr mat-row *matRowDef = "let row; columns: displayedColumn"></tr>
+        </table>
+
+        <mat-paginator
+          [length] = "length"
+          [pageSize]="10"
+          [showFirstLastButtons] = true
+          [pageSizeOptions]="[5,10,20]"
+          [pageIndex]="currentPage"
+          (page) ="handlePageEvent($event)"
+        >
+        </mat-paginator>
+
+      </div>
+
+    </section>
+
+    <style>
+      .delete-btn{
+        font-size: 0.7rem;
+      }
+    </style>
+
+  `,
+  styles:[`
+
+  `]
 })
 export class EventListComponent {
 
@@ -23,8 +81,8 @@ export class EventListComponent {
   ngOnInit(){
     this.contentService.calendarEventStream.subscribe(subj=>{
       subj.subscribe((obs:any)=>{
-       this.items = obs;
-       this.sortPage(this.items);
+       this.sortPage(obs);
+        this.items = obs;
        this.dataSource.data = this.items;
        this.length = this.items.length;
       })

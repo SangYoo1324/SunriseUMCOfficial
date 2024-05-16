@@ -1,4 +1,4 @@
-import {Component, HostListener, ViewChild} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, ViewChild} from '@angular/core';
 import {animate, query, style, transition, trigger} from "@angular/animations";
 import {NavigationEnd, Router, RouterOutlet} from "@angular/router";
 import {fader, slider} from "./route-animations";
@@ -13,7 +13,8 @@ import {CalendarOptions} from "@fullcalendar/core";
   animations:[
     //fader
     slider
-  ]
+  ],
+  // declaring we're going to use custom dependencies not from ng but npm
 })
 export class AppComponent {
   title = 'sunriseUMC';

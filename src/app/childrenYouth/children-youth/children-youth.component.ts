@@ -4,8 +4,18 @@ import {PageTitleComponent} from "../../commonComponents/page-title/page-title.c
 
 @Component({
   selector: 'app-children-youth',
-  templateUrl: './children-youth.component.html',
-  styleUrls: ['./children-youth.component.css']
+  template: `
+    <app-page-title #childrenYouthTitle></app-page-title>
+    <app-children-youth-intro></app-children-youth-intro>
+    <app-section-separator></app-section-separator>
+    <app-youth-contents></app-youth-contents>
+
+  `,
+  styles: [
+    `
+
+    `
+  ]
 })
 export class ChildrenYouthComponent {
 

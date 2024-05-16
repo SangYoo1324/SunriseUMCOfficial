@@ -5,8 +5,38 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  template:`
+    <div class="dummy"></div>
+
+    <section>
+      <div class="container">
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+          <div class="mb-3">
+            <label for="id" class="form-label">ID</label>
+            <input type="text" class="form-control" id="id" name="id" aria-describedby="idHelp" [(ngModel)]="id">
+            <div id="idHelp" class="form-text">Only Activated Admin Credential can access</div>
+          </div>
+          <div class="mb-3">
+            <label for="pw" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pw" name="pw" [(ngModel)]="pw">
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+        </form>
+      </div>
+    </section>
+
+
+    <style>
+      .dummy{
+        width: 100%;
+        height: 300px;
+      }
+    </style>
+
+  `,
+  styles:[`
+
+  `]
 })
 export class LoginComponent {
       id:string= '';

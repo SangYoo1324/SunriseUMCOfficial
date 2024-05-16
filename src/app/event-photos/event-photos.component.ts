@@ -7,8 +7,84 @@ import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-event-photos',
-  templateUrl: './event-photos.component.html',
-  styleUrls: ['./event-photos.component.css']
+  template:`
+    <app-page-title #pageTitle></app-page-title>
+
+    <section>
+      <div class="container">
+        <app-section-title #sectionTitle></app-section-title>
+      </div>
+      <app-search
+        (inputEvent)="catchInputEvent($event)"
+        (refreshEvent)="resetSearchResult($event)"
+      ></app-search>
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-3 item"
+               *ngFor="let event of (displayedItems) let i=index" routerLink="/eventPhotos/photoDetail/{{event.id}}">
+            <div class="card">
+              <img [src]="event.s3_urls[0]" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{event.title}} &nbsp;</h5>
+                <p class="card-text">{{event.subTitle}}</p>
+                <!--            <p class="card-text"><small class="text-body-secondary">from {{event.date | date:'yyyy-mm-dd'}}</small></p>-->
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <mat-paginator
+          [length] = "length"
+          [pageSize]="5"
+          [showFirstLastButtons] = true
+          [pageSizeOptions]="[5,10,20]"
+          [pageIndex]="currentPage"
+          (page) ="handlePageEvent($event)"
+        ></mat-paginator>
+      </div>
+    </section>
+
+    <style>
+
+      .card{
+        box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.5);
+      }
+
+      .item{
+        margin-bottom: 2rem;
+        /*display: none;*/
+      }
+
+      .card{
+      !important width: 25rem;
+      }
+
+      /*.pagination-active{*/
+      /*  display: block;*/
+      /*}*/
+      /*.search-active{*/
+      /*  display: block;*/
+      /*}*/
+
+      img{
+        min-height: 250px;
+        max-height: 250px;
+      }
+
+      .item{
+        cursor:pointer;
+      }
+
+    </style>
+
+  `,
+  styles:[`
+
+  `]
 })
 export class EventPhotosComponent {
 

@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import url('https://webfontworld.github.io/cookierun/CookieRun.css');
+@import url('https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
 @font-face{
   font-family:'LotteMartHappyme';
   font-style:normal;
@@ -8,6 +14,8 @@
   src:url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'),
   url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
 }
+
+/* styles.css */
 
 main{
   position: relative;
@@ -17,8 +25,7 @@ main{
 
 
 section{
-  font-family: "LotteMartHappyme";
-  font-size: 25px;
+  font-size: 17px;
   color: #1e2125;
   background: white;
   padding: 3rem 0;
@@ -37,9 +44,47 @@ section{
 
   color: black;
 }
+.fc-event-title-container{
+  height: 1.3rem !important;
+}
+
 
 .fc .fc-daygrid-day-number {
   color: black;
+}
+.fc-event-main{
+  background-color: #ffffe0 !important;
+  color: black !important;
+}
+
+.fc-h-event{
+  border: none !important;
+}
+
+.fc-daygrid-event{
+  white-space: break-spaces;
+}
+
+
+.fc-h-event .fc-event-title{
+  hyphens: auto;
+  width: 100%;
+}
+.fc-event-title{
+  font-size: 0.7rem !important;
+}
+
+.fc-dayGridWeek th.fc-day-header.fc-widget-header.fc-sun {
+  background-color: #f2fe8a; /* 일요일의 배경색을 변경 */
+}
+
+@media  screen and (max-width: 768px) {
+  .fc-event-title{
+    font-size: 0.6rem !important;
+  }
+  .fc-event-title-container{
+    height: 1.3rem !important;
+  }
 }
 
 :root{
@@ -53,4 +98,5 @@ section{
 .bg-gray{
   background-color: lightgrey;
 }
+
 

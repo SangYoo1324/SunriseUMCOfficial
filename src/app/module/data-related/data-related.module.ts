@@ -26,6 +26,8 @@ import {FullCalendarModule} from "@fullcalendar/angular";
 import {SectionSeparatorComponent} from "../../commonComponents/section-separator/section-separator.component";
 import {VariousContentsComponent} from "../../newsActivities/various-contents/various-contents.component";
 import {LoadingMarkComponent} from "../../commonComponents/loading-mark/loading-mark.component";
+import {NewsListComponent} from "../../control-panel/news-list/news-list.component";
+import {PostNewsComponent} from "../../control-panel/post-news/post-news.component";
 
 
 
@@ -41,7 +43,6 @@ import {LoadingMarkComponent} from "../../commonComponents/loading-mark/loading-
     SearchComponent,
     PhotoListComponent,
     PhotoDetailComponent,
-    ControlPanelComponent,
   ],
   imports: [
     CommonModule,
@@ -56,9 +57,14 @@ import {LoadingMarkComponent} from "../../commonComponents/loading-mark/loading-
     FullCalendarModule,
     SectionSeparatorComponent,
     VariousContentsComponent,
-    LoadingMarkComponent
+    LoadingMarkComponent,
+    NewsListComponent,
+    PostNewsComponent
 
   ],
   providers: [AdminGuard, ContentServiceService],
+  exports: [
+    PhotoEventControlComponent
+  ]
 })
 export class DataRelatedModule { }

@@ -20,10 +20,11 @@
 
 
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
   .fc{
-    font-size: 0.7rem;
+    font-size: 0.5rem;
   }
+
 
 }

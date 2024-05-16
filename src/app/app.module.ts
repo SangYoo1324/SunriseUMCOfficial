@@ -34,6 +34,7 @@ import {SectionTitleComponent} from "./commonComponents/section-title/section-ti
 import {LoadingMarkComponent} from "./commonComponents/loading-mark/loading-mark.component";
 import {RecentEventsComponent} from "./mainPage/recent-events/recent-events.component";
 import {ContactComponent} from "./visitorsInfo/contact/contact.component";
+import {SliderComponent} from "./commonComponents/slider/slider.component";
 
 
 
@@ -64,26 +65,27 @@ import {ContactComponent} from "./visitorsInfo/contact/contact.component";
 
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    // FullCalendarModule,
-    // PaginationModule,
-    FormsModule,
-    HttpClientModule,
-    // MatPaginatorModule,
-    // MatTableModule,
-    // MatDialogModule,
-    SectionSeparatorComponent,
-    ContentsBubbleComponent,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        // FullCalendarModule,
+        // PaginationModule,
+        FormsModule,
+        HttpClientModule,
+        // MatPaginatorModule,
+        // MatTableModule,
+        // MatDialogModule,
+        SectionSeparatorComponent,
+        ContentsBubbleComponent,
 
-    CommonComponentModuleModule,
-    DataRelatedModule,
-    LoadingMarkComponent,
-    RecentEventsComponent,
-    ContactComponent
-  ],
+        CommonComponentModuleModule,
+        DataRelatedModule,
+        LoadingMarkComponent,
+        RecentEventsComponent,
+        ContactComponent,
+        SliderComponent
+    ],
   providers: [AdminGuard, ContentServiceService],
     exports: [
         JumbotronComponent,

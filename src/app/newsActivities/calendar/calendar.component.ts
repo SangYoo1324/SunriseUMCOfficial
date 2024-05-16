@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Renderer2} from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import {CalendarOptions} from "@fullcalendar/core";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {EventModalComponent} from "./event-modal/event-modal.component";
 import {Subject, takeUntil} from "rxjs";
 import {ContentServiceService} from "../../service/content-service.service";
+import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 
 @Component({
   selector: 'app-calendar',
@@ -17,20 +18,32 @@ export class CalendarComponent {
   private destroy$ = new Subject<void>();
 
   events:any[] =[
-    {title: 'event 1', date: '2023-06-01', time:'10:10',  cloudinaryUrl: "/assets/board.jpeg",
-      description: "This is the Description of the Event details", color: 'red'},
-    {title: 'event 2', date: '2023-06-02', time:'10:10',  cloudinaryUrl: "/assets/board.jpeg",
-      description: "This is the Description of the Event details"},
-    {title: 'event 3', date: '2023-06-03', time:'10:10',  cloudinaryUrl: "/assets/board.jpeg",
-      description: "This is the Description of the Event details"}
+    // {title: 'event 1', date: '2023-06-01', time:'10:10',  s3_url: "/assets/board.jpeg",
+    //   description: "This is the Description of the Event details", color: 'red'},
+    // {title: 'event 2', date: '2023-06-02', time:'10:10',  s3_url: "/assets/board.jpeg",
+    //   description: "This is the Description of the Event details"},
+    // {title: 'event 3', date: '2023-06-03', time:'10:10',  s3_url: "/assets/board.jpeg",
+    //   description: "This is the Description of the Event details"}
   ]
 
   // basic calendar options
   calendarOptions: CalendarOptions = {
     events: this.events,
+    // eventContent: this.handleEventRender.bind(this),
+    eventDidMount: function(info) {
+      const maxLength = 10;
+      const trimmedTitle = info.event.title.length > maxLength ? info.event.title.substring(0, maxLength) + '...' : info.event.title;
+      console.log("info.event.title", info.event.title);
+      console.log("info.el", info.el);
+
+      // 이벤트 요소의 title 속성을 변경하여 마우스를 올렸을 때 툴팁으로 제목이 표시되도록 설정
+      info.event.setProp("title",trimmedTitle);
+
+    },
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin,
     interactionPlugin],
+    // eventBackgroundColor: "ffffe0",
     weekends: true,
     dateClick: this.handleDateClick.bind(this),
     eventClick: this.openDialog.bind(this)
@@ -41,8 +54,17 @@ export class CalendarComponent {
 
     this.contentService.calendarEventStream.pipe(takeUntil(this.destroy$)).subscribe((subj)=>{
       subj.pipe(takeUntil(this.destroy$)).subscribe((obs:any)=>{
-        console.log(obs);
+        obs.map((data:any)=>{
+
+
+          console.log("remove GMT sign"+data.date.toString().slice(0,10));
+          return {
+            date: data.date,
+            ...data
+          }
+        })
        this.calendarOptions.events = obs;
+       this.events = obs;
       })
     });
 
@@ -66,7 +88,17 @@ export class CalendarComponent {
 
     }, );
   }
-
+  // isTitleSet: boolean = false;
+  // handleEventRender(info:any){
+  //   console.log("info "+ info.event.title);
+  //   const maxLength = 10;
+  //   const trimmedTitle = "test";
+  //   if (!this.isTitleSet) {
+  //     info.event.setProp('title', trimmedTitle); // 이벤트의 제목을 수정하여 title 속성으로 설정
+  //     this.isTitleSet = true; // 플래그 업데이트
+  //   }
+  //   // this.renderer.setProperty(info.event, 'textContent', trimmedTitle);
+  // }
 
   handleDateClick(arg:any){
     console.log('date click!   '+ arg.dateStr);
@@ -74,16 +106,32 @@ export class CalendarComponent {
     console.log(matchingEvents);
   }
 
-  constructor(public dialog:MatDialog, private contentService:ContentServiceService) {
+  constructor(public dialog:MatDialog, private contentService:ContentServiceService, private renderer: Renderer2) {
   }
 
   openDialog(arg:any){
-    // console.log('date click!'+ JSON.stringify(arg, null, 2));
-    // console.log(arg.el.fcSeg.eventRange.def.title);
-    console.log(arg.el.fcSeg.eventRange);
+    console.log(arg);
+
+    this.events.forEach((data:any)=> {console.log("date", data.date.toString().slice(0,10))} );
+    const argString = arg.el.fcSeg.eventRange.range.end.toString().slice(0,15);
+    console.log("argString=",argString);
+    const argDateObject =  new Date(argString);
+    const isoArgDateString = argDateObject.toISOString().split('T')[0];
+    console.log("arg date" ,isoArgDateString);
+    console.log(arg.el.fcSeg.eventRange.def.title);
+
     let data ={
-      title: arg.el.fcSeg.eventRange.def.title,
-      date: arg.el.fcSeg.eventRange.range.end.toString().slice(0,10),
+
+      title: this.events.filter(data=> data.date === isoArgDateString)
+        //filter with title
+        .filter(data=>{
+          console.log("data.description", data.description);
+          console.log("arg.el.fcSeg.eventRange.def.extendedProps.description ", arg.el.fcSeg.eventRange.def.extendedProps.description )
+          return data.description === arg.el.fcSeg.eventRange.def.extendedProps.description
+        })
+        [0]
+        .title,
+      date: isoArgDateString,
       ...arg.el.fcSeg.eventRange.def.extendedProps
 
     }

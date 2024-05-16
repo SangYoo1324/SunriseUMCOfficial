@@ -16,7 +16,25 @@ import { Component } from '@angular/core';
 
     </div>
   `,
-  styleUrl: './loading-mark.component.css'
+  styles:[`
+    .spinner-wrap{
+      display: flex;
+      justify-content: center;
+    }
+    .text-wrap{
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+
+    }
+    .spinner-border{
+      width: 5rem;
+      height: 5rem;
+      border-width: 1rem;
+      color: gray;
+    }
+
+  `]
 })
 export class LoadingMarkComponent {
 

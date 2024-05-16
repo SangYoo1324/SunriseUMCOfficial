@@ -6,8 +6,25 @@ import {ContentServiceService} from "../../service/content-service.service";
 
 @Component({
   selector: 'app-youth-contents',
-  templateUrl: './youth-contents.component.html',
-  styleUrls: ['./youth-contents.component.css']
+ template:`
+   <section class="section-bg-dark">
+     <div class="container">
+       <app-section-title  #sectionTitleComponent></app-section-title>
+
+       <div class="contents-wrap">
+         <app-contents-bubble
+           [contentsItems] = "contentItems"></app-contents-bubble>
+       </div>
+     </div>
+
+     <app-contents-bubble-detail></app-contents-bubble-detail>
+   </section>
+
+
+ `,
+  styles:[`
+
+  `]
 })
 export class YouthContentsComponent {
   // section Title control variable
@@ -30,7 +47,7 @@ export class YouthContentsComponent {
   ngAfterViewInit(){
     // section Title control
     this.sectionTitle.title.nativeElement.textContent = 'Youth Contents';
-    this.sectionTitle.subTitle.nativeElement.textContent = 'More Details';
+    this.sectionTitle.subTitle.nativeElement.textContent = 'Check Our Youth Contents!';
   }
 
   protected readonly repeat = repeat;
