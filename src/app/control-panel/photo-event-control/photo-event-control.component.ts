@@ -1,17 +1,19 @@
 import {Component, ElementRef, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {NgForm} from "@angular/forms";
+import {FormsModule, NgForm} from "@angular/forms";
 import {ContentServiceService} from "../../service/content-service.service";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-photo-event-control',
-  template:`
+  standalone: true,
+  template: `
     <section class="bg-gray">
 
       <div class="container">
         <h1 class="mb-5">EventPhoto Post</h1>
 
 
-        <form (ngSubmit)="onSubmit(myForm.value)" #myForm = "ngForm">
+        <form (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
 
           <div class="mb-3">
             <label for="title" class="form-label">title</label>
@@ -26,7 +28,7 @@ import {ContentServiceService} from "../../service/content-service.service";
           </div>
 
           <div class="input-group mb-3" *ngFor="let input of photoInputs; let i = index;">
-            <label class="input-group-text" >Upload</label>
+            <label class="input-group-text">Upload</label>
             <input id="images" type="file" (change)="onFileInputChange($event, i)" #fileInput>
             <label class="file-label">
 
@@ -42,10 +44,7 @@ import {ContentServiceService} from "../../service/content-service.service";
           </div>
 
 
-
-
-
-          <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid" >Submit</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
         </form>
 
       </div>
@@ -53,9 +52,10 @@ import {ContentServiceService} from "../../service/content-service.service";
 
 
     <style>
-      #images{
+      #images {
         display: none;
       }
+
       .file-label {
         display: inline-block;
         border: 1px solid #ccc;
@@ -65,7 +65,12 @@ import {ContentServiceService} from "../../service/content-service.service";
     </style>
 
   `,
-  styles:[`
+  imports: [
+    FormsModule,
+    NgIf,
+    NgForOf
+  ],
+  styles: [`
 
   `]
 })

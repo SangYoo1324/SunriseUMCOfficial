@@ -3,7 +3,6 @@ import {PageTitleComponent} from "../../commonComponents/page-title/page-title.c
 import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
 import {FormsModule, NgForm} from "@angular/forms";
 import {ContentServiceService} from "../../service/content-service.service";
-import {CommonComponentModuleModule} from "../../module/common-component-module.module";
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -11,9 +10,10 @@ import {NgIf} from "@angular/common";
   standalone: true,
   templateUrl: './contact.component.html',
   imports: [
-    CommonComponentModuleModule,
+
     FormsModule,
-    NgIf
+    NgIf,
+    SectionTitleComponent
   ],
   styleUrls: ['./contact.component.css']
 })

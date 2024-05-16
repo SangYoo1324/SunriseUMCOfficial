@@ -13,6 +13,7 @@ import {PhotoDetailComponent} from "./event-photos/photo-detail/photo-detail.com
 import {ControlPanelComponent} from "./control-panel/control-panel.component";
 import {AdminGuard} from "./routeGuard/admin.guard";
 import {LoginComponent} from "./login/login.component";
+import {DonationComponent} from "./donation/donation.component";
 
 const routes: Routes = [
   {path: '',component: JumbotronComponent ,},
@@ -26,7 +27,7 @@ const routes: Routes = [
   {path: 'eventPhotos/photoDetail/:id', component: PhotoDetailComponent},
   {path: 'controlPanel', component: ControlPanelComponent, canActivate:[AdminGuard]},
   {path: 'login', component: LoginComponent},
-  { path: 'donation', loadChildren: () => import('./donation/donation.module').then(m => m.DonationModule) },
+  { path: 'donation', component: DonationComponent },
   {path: '**', component: PageNotFoundComponent}
 
 

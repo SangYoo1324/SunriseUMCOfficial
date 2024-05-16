@@ -1,5 +1,4 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {CommonComponentModuleModule} from "../../module/common-component-module.module";
 import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
 import {VerticalCardComponent} from "../../commonComponents/vertical-card/vertical-card.component";
 import {NgFor} from "@angular/common";
@@ -8,9 +7,9 @@ import {NgFor} from "@angular/common";
   selector: 'app-resources',
   standalone: true,
   imports: [
-    CommonComponentModuleModule,
     VerticalCardComponent,
-    NgFor
+    NgFor,
+    SectionTitleComponent
   ],
   template:`<section>
     <app-section-title #sectionTitle></app-section-title>

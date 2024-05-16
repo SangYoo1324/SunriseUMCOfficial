@@ -7,10 +7,15 @@ import {EventModalComponent} from "./event-modal/event-modal.component";
 import {Subject, takeUntil} from "rxjs";
 import {ContentServiceService} from "../../service/content-service.service";
 import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
+import {FullCalendarModule} from "@fullcalendar/angular";
 
 @Component({
   selector: 'app-calendar',
+  standalone: true,
   templateUrl: './calendar.component.html',
+  imports: [
+    FullCalendarModule
+  ],
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent {

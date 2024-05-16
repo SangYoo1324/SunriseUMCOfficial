@@ -1,26 +1,33 @@
 import {Component, ViewChild} from '@angular/core';
 import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
 import {ContentServiceService} from "../../service/content-service.service";
-import {filter, find, map, Observable} from "rxjs";
-import {Router} from "@angular/router";
+import {async, filter, find, map, Observable} from "rxjs";
+import {Router, RouterLink} from "@angular/router";
 import {ScrollServiceService} from "../../service/scroll-service.service";
+import {NgIf} from "@angular/common";
+import {LoadingMarkComponent} from "../../commonComponents/loading-mark/loading-mark.component";
 
 @Component({
   selector: 'app-intro',
-  template:`
+  standalone: true,
+  template: `
     <section id="intro">
       <div class="container">
         <app-section-title #sectionTitleComponent>
           <p>His love is reaching out to you.</p>
         </app-section-title>
         <div class="row">
-          <ng-container  *ngIf="isLoading">
+          <ng-container *ngIf="isLoading">
             <app-loading-mark></app-loading-mark>
           </ng-container>
           <div class="left col-lg-6">
 
-            <iframe width="100%" height="350px"    [src]="(recentSermon$ | async)?.iframe" title="Build Angular Pagination Without a Library" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <button class="btn btn-outline-dark" (click)="goTo('newsActivities','SermonList')">Check Prev Sermons</button>
+            <iframe width="100%" height="350px" [src]="recentSermonObj?.iframe"
+                    title="Build Angular Pagination Without a Library" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            <button class="btn btn-outline-dark" (click)="goTo('newsActivities','SermonList')">Check Prev Sermons
+            </button>
 
             <div class="pastor-intro card mb-3" style=" margin-top: 2rem">
               <div class="wrap row g-0">
@@ -33,13 +40,15 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
                     <p class="card-text">
                       As God's called servant to Pastor at Sunrise Christ Community Church I want to
                       personally invite you to come join us and share in the Light and Love of Jesus Christ,
-                      the Son of God, our Savior and Lord. It is through Him we come into the intimacy and holiness of God and
+                      the Son of God, our Savior and Lord. It is through Him we come into the intimacy and holiness of
+                      God and
                       find salvation and true life. When a few disciples, right after his baptism, began to follow Jesus
                       he turned around and said, "What do you want?" They asked, "were are you staying?"
                       "Come." Jesus replied, "and you will see." All are welcome to come and see Jesus here, and
                       find rest for your souls(John 1:37-39; Matthew 11:28-30).
                     </p>
-                    <p class="card-text"><small class="text-body-secondary"><a href="pastorjim@sunrisechristcc.org">pastorjim&#64;sunrisechristcc.org</a></small></p>
+                    <p class="card-text"><small class="text-body-secondary"><a href="pastorjim@sunrisechristcc.org">pastorjim&#64;sunrisechristcc.org</a></small>
+                    </p>
                     <p class="card-text"><small class="text-body-secondary">(253)-815-6925</small></p>
                   </div>
                 </div>
@@ -54,9 +63,14 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
               <p>
                 sending all of you who visit us here a word of encouragement. No matter where we find
                 ourselves God is there and is working all things together for your good (Rom. 8:28). In these
-                times it is easy to be anxious and fearful. Yet, we can hear Jesus say, “Peace, do not be afraid.” Our Lord knows what is happening and walks with us each and every step. Jesus said, “Come to Me all who are weary and heavy laden (burdened) and I will give you rest.
+                times it is easy to be anxious and fearful. Yet, we can hear Jesus say, “Peace, do not be afraid.” Our
+                Lord knows what is happening and walks with us each and every step. Jesus said, “Come to Me all who are
+                weary and heavy laden (burdened) and I will give you rest.
                 Take My yoke upon you, and learn from Me; for I am gentle and humble in heart, and you will find
-                rest for your souls”-Matthew 11:28-29. Please join us every Sunday for worship at 10 am as we lift up Christ together. Also you will find us on Youtube at "SunriseChrist Community Church" God gives us enough for today and will lead us through the wilderness to safety. Proclaim daily Psalm 91:1-7. Peace of Christ be with you.
+                rest for your souls”-Matthew 11:28-29. Please join us every Sunday for worship at 10 am as we lift up
+                Christ together. Also you will find us on Youtube at "SunriseChrist Community Church" God gives us
+                enough for today and will lead us through the wilderness to safety. Proclaim daily Psalm 91:1-7. Peace
+                of Christ be with you.
               </p>
 
 
@@ -74,36 +88,42 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
                   <!--              <div class="group">-->
                   <div class="location nav_item" (click)="goTo('visitorsInfo', 'navPoint')">
                     <div class="text_wrap">
-                      <div class="txt">Location</div> <i class="fa-solid fa-location-dot"></i>
+                      <div class="txt">Location</div>
+                      <i class="fa-solid fa-location-dot"></i>
                     </div>
                   </div>
                   <div class="weekly_news nav_item" (click)="goTo('newsActivities', 'navPoint')">
                     <div class="text_wrap">
-                      <div class="txt">News & Events</div> <i class="fa-solid fa-newspaper"></i>
+                      <div class="txt">News & Events</div>
+                      <i class="fa-solid fa-newspaper"></i>
                     </div>
                   </div>
                   <!--              </div>-->
                   <!--              <div class=" group">-->
                   <div class="sermons nav_item" routerLink="/newsActivities/sermonDetail/1">
                     <div class="text_wrap">
-                      <div class="txt">Sermons</div> <i class="fa-sharp fa-solid fa-file-lines"></i>
+                      <div class="txt">Sermons</div>
+                      <i class="fa-sharp fa-solid fa-file-lines"></i>
                     </div>
 
                   </div>
                   <div class="online_give nav_item" routerLink="/donation">
                     <div class="text_wrap">
-                      <div class="txt">Resources</div> <i class="fa-solid fa-box"></i>
+                      <div class="txt">Resources</div>
+                      <i class="fa-solid fa-box"></i>
                     </div>
                   </div>
 
                   <div class="event_photos nav_item" routerLink="/eventPhotos">
                     <div class="text_wrap">
-                      <div>Photos</div><i class="fa-solid fa-camera"></i>
+                      <div>Photos</div>
+                      <i class="fa-solid fa-camera"></i>
                     </div>
                   </div>
                   <div class="contact nav_item" routerLink="/eventPhotos" (click)="goTo('visitorsInfo','Contact')">
                     <div class="text_wrap">
-                      <div>Contact</div><i class="fa-solid fa-phone"></i>
+                      <div>Contact</div>
+                      <i class="fa-solid fa-phone"></i>
                     </div>
                   </div>
 
@@ -119,84 +139,94 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
     </section>
 
   `,
-  styles:[`
-    .left{
-      height: fit-content;
-    }
-    .right{
+  imports: [
+    SectionTitleComponent,
+    NgIf,
+    LoadingMarkComponent,
+    RouterLink
+  ],
+  styles: [`
+    .left {
       height: fit-content;
     }
 
-    .pastor-intro{
+    .right {
+      height: fit-content;
+    }
+
+    .pastor-intro {
       width: 100%;
     }
 
-    .wrap{
+    .wrap {
       padding: 1.3rem;
       font-size: 1rem;
     }
 
-    .img_box{
+    .img_box {
       display: flex;
       align-items: center;
     }
 
-    .pastor-intro img{
+    .pastor-intro img {
       width: 10rem;
       height: 80%;
       padding: 0 0.7rem;
       /*border-radius: 3rem;*/
     }
 
-    .card-body{
+    .card-body {
       font-size: 15px;
     }
 
-    .card-text{
+    .card-text {
       font-size: 11px;
     }
 
 
-    .icon_group{
+    .icon_group {
       font-size: 1.5rem;
     }
-    .link_wrap>div{
+
+    .link_wrap > div {
       color: #ed4848;
       font-size: 1.2rem;
       display: flex;
       align-items: center;
       text-decoration: underline;
     }
-    .link_wrap{
+
+    .link_wrap {
       display: flex;
       justify-content: flex-end;
     }
-    i{
+
+    i {
       padding-left: 0.5rem;
     }
 
-    .fa-youtube{
+    .fa-youtube {
       color: red;
     }
 
-    span{
+    span {
       color: #ed4848;
     }
 
     /*nav_group */
 
-    .nav_wrap{
+    .nav_wrap {
       margin-top: 2rem;
       margin-left: 0.1rem;
     }
 
-    .group{
+    .group {
       display: flex;
       margin-bottom: 0.5rem;
       padding: 0;
     }
 
-    .nav_item{
+    .nav_item {
       border-radius: 0.2rem;
       width: 24%;
       height: 90px;
@@ -211,48 +241,49 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
     }
 
 
-    .nav_item:hover{
+    .nav_item:hover {
       box-shadow: none;
       margin-left: 2px;
       margin-top: 2px;
     }
-    .text_wrap>p, .text_wrap>i{
+
+    .text_wrap > p, .text_wrap > i {
       display: block;
     }
 
-    .text_wrap{
+    .text_wrap {
       width: 90%;
       display: flex;
       justify-content: space-between;
     }
 
-    .text_wrap>div{
+    .text_wrap > div {
       color: white;
       font-size: 1.1rem;
     }
 
-    .location{
+    .location {
       background-image: url("/assets/nav1.gif");
     }
 
-    .weekly_news{
+    .weekly_news {
       background-image: url("/assets/nav2.gif");
     }
 
-    .event_photos{
+    .event_photos {
       background-image: url("/assets/nav3.gif");
     }
 
-    .sermons{
+    .sermons {
       background-image: url("/assets/nav4.gif");
     }
 
-    .online_give{
+    .online_give {
       background-image: url("/assets/nav1.gif");
     }
 
 
-    .contact{
+    .contact {
       background-image: url("/assets/nav2.gif");
     }
 
@@ -260,44 +291,46 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
 
     @media (max-width: 1386px) {
 
-      .card-text{
+      .card-text {
         font-size: 11px;
       }
 
-      .nav_wrap{
+      .nav_wrap {
         width: 100%;
       }
-      .left{
+
+      .left {
         height: fit-content;
       }
-      .right{
+
+      .right {
         height: fit-content;
       }
 
 
-
-      .p{
+      .p {
         font-size: 13px;
       }
 
-      .text_wrap>div{
+      .text_wrap > div {
         color: white;
         font-size: 0.8rem;
       }
-      .text_wrap>i{
+
+      .text_wrap > i {
         font-size: 0.8rem;
       }
 
-      .jumbotron_text_box{
+      .jumbotron_text_box {
         width: 90%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
       }
 
-      .btn_wrap{
+      .btn_wrap {
         display: block;
       }
 
-      .nav_item{
+      .nav_item {
         width: 47.6%;
       }
 
@@ -313,6 +346,8 @@ export class IntroComponent {
 
   sermonObservable$!:Observable<any>;
   recentSermon$!:Observable<any>;
+
+  recentSermonObj!:any;
   // input으로 carousel 에 들어갈 slide info
   images:any[]= [
     {url: 'assets/VBS_1.jpg'},
@@ -341,6 +376,10 @@ export class IntroComponent {
        return obj[0];
      }))
    });
+
+   this.recentSermon$.subscribe(resp=>{
+     this.recentSermonObj = resp;
+   })
   }
 
   sortSermon(items:any){
@@ -357,4 +396,5 @@ export class IntroComponent {
   }
 
 
+  protected readonly async = async;
 }

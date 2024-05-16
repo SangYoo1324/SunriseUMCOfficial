@@ -2,17 +2,26 @@ import { Component } from '@angular/core';
 import {ContentServiceService} from "../../service/content-service.service";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {filter, map, Observable, of} from "rxjs";
-import {MatPaginatorIntl, PageEvent} from "@angular/material/paginator";
+import {MatPaginatorIntl, MatPaginatorModule, PageEvent} from "@angular/material/paginator";
 import {PaginatorService} from "../../service/paginator.service";
-import {MatTableDataSource} from "@angular/material/table";
+import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {Router} from "@angular/router";
+import {LoadingMarkComponent} from "../../commonComponents/loading-mark/loading-mark.component";
+import {DatePipe} from "@angular/common";
 
 
 @Component({
   selector: 'app-sermon-archive',
+  standalone: true,
   templateUrl: './sermon-archive.component.html',
   styleUrls: ['./sermon-archive.component.css'],
-  providers:[{provide:MatPaginatorIntl, useClass:PaginatorService}]
+  imports: [
+    MatTableModule,
+    LoadingMarkComponent,
+    MatPaginatorModule,
+    DatePipe
+  ],
+  providers: [{provide: MatPaginatorIntl, useClass: PaginatorService}]
 })
 export class SermonArchiveComponent {
 
@@ -82,4 +91,6 @@ export class SermonArchiveComponent {
   sortSermon(items:any){
     items.sort((a:any,b:any)=>new Date(b.date).getTime()-new Date(a.date).getTime());
   }
+
+  protected readonly PageEvent = PageEvent;
 }

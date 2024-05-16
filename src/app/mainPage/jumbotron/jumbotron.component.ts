@@ -1,10 +1,14 @@
 import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {ScrollServiceService} from "../../service/scroll-service.service";
+import {RouterLink} from "@angular/router";
+import {IntroComponent} from "../intro/intro.component";
+import {RecentEventsComponent} from "../recent-events/recent-events.component";
 
 
 @Component({
   selector: 'app-jumbotron',
+  standalone: true,
   template: `
     <div id="jumbotron" #jumbotron>
 
@@ -19,14 +23,14 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
             <h5>"Blessings to you all in the Powerful and Loving Name of Jesus"</h5>
           </div>
           <div class="btn_wrap">
-            <a class="Btn_link" routerLink="/visitorsInfo" >Plan for Visit &nbsp;<b> > </b></a>
-            <a class="Btn_link" (click)="goTo('newsActivities','SermonList')" >Sunday Worship &nbsp;<b> > </b></a>
+            <a class="Btn_link" routerLink="/visitorsInfo">Plan for Visit &nbsp;<b> > </b></a>
+            <a class="Btn_link" (click)="goTo('newsActivities','SermonList')">Sunday Worship &nbsp;<b> > </b></a>
           </div>
         </div>
 
       </div>
 
-      <div class="mouse"> <i class=" fa-solid fa-computer-mouse"></i></div>
+      <div class="mouse"><i class=" fa-solid fa-computer-mouse"></i></div>
     </div>
 
     <app-intro></app-intro>
@@ -34,7 +38,7 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
     <app-recent-events></app-recent-events>
 
     <style>
-      video{
+      video {
         position: relative;
         width: 100%;
         z-index: 0;
@@ -42,9 +46,9 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
     </style>
 
   `,
-  styles:[`
+  styles: [`
     /*for snowflake*/
-    .snowflake{
+    .snowflake {
       position: absolute;
       top: -8px;
       width: 8px;
@@ -56,17 +60,18 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
     }
 
     @keyframes fall {
-      from{
+      from {
         transform: translateY(-8px); /* 시작 위치 설정 */
         opacity: 1; /* 시작 투명도 설정 */
-      }to{
-         transform: translateY(100vh);
-         opacity: 0;
-       }
+      }
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
     }
 
 
-    #jumbotron{
+    #jumbotron {
       margin-top: 65px;
       position: relative;
       width: 100%;
@@ -77,17 +82,17 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
 
     }
 
-    h2{
+    h2 {
       font-weight: bold;
       font-size: 44px;
     }
 
-    p{
+    p {
       font-size: 20px;
       padding-top: 1rem;
     }
 
-    .wrap{
+    .wrap {
       position: absolute;
       width: 60%;
       top: 48%;
@@ -95,7 +100,7 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
       transform: translate(-50%, -50%);
     }
 
-    .jumbotron_text_box{
+    .jumbotron_text_box {
       color: lightgrey;
       position: absolute;
       width: 100%;
@@ -112,19 +117,20 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
       /*transform: translate(-90%,-50%);*/
       /*padding: 1rem 2rem;*/
       /*box-shadow: 0 10px 20px black;*/
-      background: linear-gradient(to top,rgba(0,0,0,0.3),rgba(0,0,0,0.3)
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)
       );
 
       /*color: white;*/
       z-index: 10;
 
     }
-    .jumbotron_text_box>.wrap>p{
+
+    .jumbotron_text_box > .wrap > p {
       font-size: 1.5rem;
     }
 
 
-    .mouse{
+    .mouse {
       display: block;
       color: white;
       font-size: 35px;
@@ -136,10 +142,11 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
       background: none;
     }
 
-    .btn_wrap{
+    .btn_wrap {
       margin-top: 1rem;
     }
-    .Btn_link{
+
+    .Btn_link {
 
       text-align: center;
       display: block;
@@ -155,67 +162,73 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
       color 1s ease-in-out;
       font-size: 14px;
     }
-    .Btn_link>a{
+
+    .Btn_link > a {
       text-decoration: none;
-      color:white;
+      color: white;
     }
-    .Btn_link>a:hover{
+
+    .Btn_link > a:hover {
       color: #1e2125;
     }
 
-    .Btn_link:hover{
+    .Btn_link:hover {
       background-color: aliceblue;
       color: #1e2125;
       cursor: pointer;
     }
 
 
-    .btn_wrap{
+    .btn_wrap {
       text-align: center;
       display: flex;
     }
 
 
     @keyframes mouse_ani {
-      0%{
+      0% {
         bottom: 30px;
-      }50%{
-         bottom: 20px;
-       }100%{
-          bottom: 30px;
-        }
+      }
+      50% {
+        bottom: 20px;
+      }
+      100% {
+        bottom: 30px;
+      }
     }
 
     @media (max-width: 767px) {
-      h2{
+      h2 {
         font-size: 20px;
         text-align: center;
       }
-      h5{
+
+      h5 {
         text-align: center;
       }
-      .p{
+
+      .p {
         font-size: 13px;
       }
 
-      .wrap{
+      .wrap {
         width: 100%;
         /*display: flex;*/
       }
 
-      .mouse{
+      .mouse {
         display: none;
       }
 
-      .btn_wrap{
+      .btn_wrap {
 
         /*margin-top: 2rem;*/
       }
-      p{
+
+      p {
         font-size: 15px;
 
       }
-
 
 
     }
@@ -223,10 +236,15 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
 
 
   `],
-  animations:[
-    trigger('animate_transparency',[
-      state('false',style({opacity:0, visibility: 'hidden'})),
-      state('true', style({opacity: 1, visibility: 'visible'}) ),
+  imports: [
+    RouterLink,
+    IntroComponent,
+    RecentEventsComponent
+  ],
+  animations: [
+    trigger('animate_transparency', [
+      state('false', style({opacity: 0, visibility: 'hidden'})),
+      state('true', style({opacity: 1, visibility: 'visible'})),
       transition('false=>true', animate('500ms ease-in')),
       transition('true=>false', animate('500ms ease-out'))
     ])

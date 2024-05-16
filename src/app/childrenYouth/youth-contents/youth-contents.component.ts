@@ -1,28 +1,40 @@
 import {Component, ViewChild} from '@angular/core';
-import {PageTitleComponent} from "../../commonComponents/page-title/page-title.component";
+
 import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
 import {repeat} from "rxjs";
 import {ContentServiceService} from "../../service/content-service.service";
 
+import {ContentsBubbleComponent} from "../../commonComponents/contents-bubble/contents-bubble.component";
+import {AppModule} from "../../app.module";
+import {
+  ContentsBubbleDetailComponent
+} from "../../commonComponents/contents-bubble-detail/contents-bubble-detail.component";
+
 @Component({
   selector: 'app-youth-contents',
- template:`
-   <section class="section-bg-dark">
-     <div class="container">
-       <app-section-title  #sectionTitleComponent></app-section-title>
+  standalone: true,
+  template: `
+    <section class="section-bg-dark">
+      <div class="container">
+        <app-section-title #sectionTitleComponent></app-section-title>
 
-       <div class="contents-wrap">
-         <app-contents-bubble
-           [contentsItems] = "contentItems"></app-contents-bubble>
-       </div>
-     </div>
+        <div class="contents-wrap">
+          <app-contents-bubble
+            [contentsItems]="contentItems"></app-contents-bubble>
+        </div>
+      </div>
 
-     <app-contents-bubble-detail></app-contents-bubble-detail>
-   </section>
+      <app-contents-bubble-detail></app-contents-bubble-detail>
+    </section>
 
 
- `,
-  styles:[`
+  `,
+  imports: [
+    ContentsBubbleComponent,
+    SectionTitleComponent,
+    ContentsBubbleDetailComponent,
+  ],
+  styles: [`
 
   `]
 })

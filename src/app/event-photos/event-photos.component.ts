@@ -3,11 +3,15 @@ import {PageTitleComponent} from "../commonComponents/page-title/page-title.comp
 import {SectionTitleComponent} from "../commonComponents/section-title/section-title.component";
 import {ContentServiceService} from "../service/content-service.service";
 import {map, Observable} from "rxjs";
-import {PageEvent} from "@angular/material/paginator";
+import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
+import {SearchComponent} from "../commonComponents/search/search.component";
+import {NgForOf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-event-photos',
-  template:`
+  standalone: true,
+  template: `
     <app-page-title #pageTitle></app-page-title>
 
     <section>
@@ -38,29 +42,29 @@ import {PageEvent} from "@angular/material/paginator";
         </div>
 
         <mat-paginator
-          [length] = "length"
+          [length]="length"
           [pageSize]="5"
-          [showFirstLastButtons] = true
+          [showFirstLastButtons]=true
           [pageSizeOptions]="[5,10,20]"
           [pageIndex]="currentPage"
-          (page) ="handlePageEvent($event)"
+          (page)="handlePageEvent($event)"
         ></mat-paginator>
       </div>
     </section>
 
     <style>
 
-      .card{
+      .card {
         box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.5);
       }
 
-      .item{
+      .item {
         margin-bottom: 2rem;
         /*display: none;*/
       }
 
-      .card{
-      !important width: 25rem;
+      .card {
+      !important width: 25 rem;
       }
 
       /*.pagination-active{*/
@@ -70,19 +74,27 @@ import {PageEvent} from "@angular/material/paginator";
       /*  display: block;*/
       /*}*/
 
-      img{
+      img {
         min-height: 250px;
         max-height: 250px;
       }
 
-      .item{
-        cursor:pointer;
+      .item {
+        cursor: pointer;
       }
 
     </style>
 
   `,
-  styles:[`
+  imports: [
+    SearchComponent,
+    MatPaginatorModule,
+    PageTitleComponent,
+    SectionTitleComponent,
+    NgForOf,
+    RouterLink
+  ],
+  styles: [`
 
   `]
 })

@@ -2,38 +2,42 @@ import {Component, ViewChild} from '@angular/core';
 import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
 import {RightIntroSectionComponent} from "../../commonComponents/right-intro-section/right-intro-section.component";
 
+import {AppModule} from "../../app.module";
+import {CarouselComponent} from "../../commonComponents/carousel/carousel.component";
+
 @Component({
   selector: 'app-children-youth-intro',
-  template:`
+  standalone: true,
+  template: `
     <section class="section-bg-white" id="children-youth">
 
       <div class="container">
-        <app-section-title  #sectionTitleComponent></app-section-title>
+        <app-section-title #sectionTitleComponent></app-section-title>
         <div class="row">
           <div class="col-lg-6 left">
             <div class="wrap">
 
             </div>
             <app-carousel
-              [images] = "images"
+              [images]="images"
               [indicators]="false"
-              [controls] = "false"
-              [autoSlide] = true
+              [controls]="false"
+              [autoSlide]=true
               [slideInterval]=5000
-              [boxShadow]= "'black'"
+              [boxShadow]="'black'"
               [subTitleColor]="'white'"
             ></app-carousel>
           </div>
           <div class="col-lg-6 right">
             <div class="wrap">
               <app-right-intro-section #rightIntroSection>
-                <p>  To enter into the Kingdom of God Jesus said we must become like children-pure,
+                <p> To enter into the Kingdom of God Jesus said we must become like children-pure,
                   full of wonder, trusting and teachable. They have much to teach us adults about
                   how our hearts need to be tender towards God. At Sunrise raising up children to love
                   Jesus and follow him is vital. We provide Sunday School, Vacation Bible School and youth events
                   and outings. Come grow with us in our vision to see families coming to Jesus with our young people
                   leading the way into the next generation for God's glory and Kingdom Come.
-              </app-right-intro-section>
+                </p>></app-right-intro-section>
             </div>
           </div>
         </div>
@@ -42,26 +46,30 @@ import {RightIntroSectionComponent} from "../../commonComponents/right-intro-sec
     </section>
 
   `,
-  styles:[`
-    .left{
+  imports: [
+    SectionTitleComponent,
+    CarouselComponent,
+    RightIntroSectionComponent
+  ],
+  styles: [`
+    .left {
       padding: 0;
     }
-    .right{
+
+    .right {
       padding-left: 2rem;
     }
-    .wrap{
+
+    .wrap {
       font-size: 1rem;
     }
 
 
     @media (max-width: 767px) {
 
-      .left{
+      .left {
         margin-bottom: 1.5rem;
       }
-
-
-
 
 
     }

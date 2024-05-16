@@ -7,13 +7,12 @@ import {AuthServiceService} from "../routeGuard/auth-service.service";
 import {Router} from "@angular/router";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {DomSanitizer} from "@angular/platform-browser";
-import {DataRelatedModule} from "../module/data-related/data-related.module";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import {CommonComponentModuleModule} from "../module/common-component-module.module";
 import {EventCalendarControlComponent} from "./event-calendar-control/event-calendar-control.component";
 import {EventListComponent} from "./event-list/event-list.component";
 import {PostNewsComponent} from "./post-news/post-news.component";
 import {NewsListComponent} from "./news-list/news-list.component";
+import {PhotoEventControlComponent} from "./photo-event-control/photo-event-control.component";
 
 @Component({
   selector: 'app-control-panel',
@@ -155,15 +154,16 @@ import {NewsListComponent} from "./news-list/news-list.component";
 
   `,
   imports: [
-    DataRelatedModule,
     MatPaginatorModule,
     FormsModule,
-    CommonComponentModuleModule,
+
     EventCalendarControlComponent,
     EventListComponent,
     PostNewsComponent,
     NewsListComponent,
-    MatTableModule
+    MatTableModule,
+    PhotoEventControlComponent,
+    PageTitleComponent
   ],
   styles:[`
 

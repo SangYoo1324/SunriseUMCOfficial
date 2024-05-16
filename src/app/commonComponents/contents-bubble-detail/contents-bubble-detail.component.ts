@@ -1,10 +1,12 @@
 import {Component, OnInit, Renderer2} from '@angular/core';
 import {ContentServiceService} from "../../service/content-service.service";
 import {ScrollServiceService} from "../../service/scroll-service.service";
+import {SliderComponent} from "../slider/slider.component";
 
 @Component({
   selector: 'app-contents-bubble-detail',
-  template:`
+  standalone: true,
+  template: `
     <div class="container" id="contents-bubble-detail">
       <div class="display-outlet">
         <!--    <div *ngFor="let contentItem of contentItems; let i = index" class="content-wrap row"-->
@@ -20,52 +22,57 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
       </div>
     </div>
   `,
-  styles:[`
-    .display-outlet{
+  imports: [
+    SliderComponent
+  ],
+  styles: [`
+    .display-outlet {
       margin-top: 2rem;
       position: relative;
       border-radius: 2rem;
 
       border: 2px solid black;
       height: 350px;
-      background: rgba(255,255,255,0.7);
+      background: rgba(255, 255, 255, 0.7);
     }
 
-    .content-wrap{
+    .content-wrap {
       position: absolute;
       transition: opacity 1s ease-in-out;
     }
 
-    .detail{
+    .detail {
       margin-top: 2rem;
     }
 
-    .pic{
+    .pic {
       display: flex;
       width: 100%;
       height: 346px;
-      border-radius: 1.5rem 0 0 1.5rem ;
+      border-radius: 1.5rem 0 0 1.5rem;
 
     }
-    .detail{
+
+    .detail {
 
       width: 100%;
       height: 100%;
 
     }
-    h4{
+
+    h4 {
       color: #ed4848;
       width: 80%;
       margin: 0 auto;
     }
 
-    p{
+    p {
       font-size: 1.2rem;
       width: 80%;
       margin: 0 auto;
     }
 
-    .col-lg-7{
+    .col-lg-7 {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -73,18 +80,20 @@ import {ScrollServiceService} from "../../service/scroll-service.service";
     }
 
     @media (max-width: 767px) {
-      .display-outlet{
+      .display-outlet {
         height: 750px;
       }
 
-      .col-lg-6{
+      .col-lg-6 {
         margin-top: 1rem;
       }
-      h4{
+
+      h4 {
         margin-top: 2rem;
       }
-      .pic{
-        border-radius: 1.5rem 1.5rem 0 0 ;
+
+      .pic {
+        border-radius: 1.5rem 1.5rem 0 0;
       }
 
     }

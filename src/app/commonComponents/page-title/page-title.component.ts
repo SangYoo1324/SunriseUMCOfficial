@@ -4,6 +4,7 @@ import {transparency, widthChange} from "../../route-animations";
 
 @Component({
   selector: 'app-page-title',
+  standalone: true,
   template:`
     <section class="page_title">
 

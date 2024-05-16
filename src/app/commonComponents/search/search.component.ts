@@ -1,8 +1,10 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-search',
-  template:`
+  standalone: true,
+  template: `
     <div class="container">
       <div class="wrap">
         <h4>search:</h4>
@@ -14,7 +16,10 @@ import {Component, EventEmitter, Output} from '@angular/core';
       </div>
     </div>
   `,
-  styles:[`
+  imports: [
+    FormsModule
+  ],
+  styles: [`
     h4 {
       display: flex;
       width: 30%;
@@ -30,7 +35,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
       height: 2rem;
     }
 
-    button:hover{
+    button:hover {
       background-color: #1e2125;
       color: white;
       cursor: pointer;

@@ -2,10 +2,12 @@ import {Component, ElementRef, Input, QueryList, Renderer2, ViewChild, ViewChild
 import {expander, transparency} from "../../route-animations";
 import {ContentServiceService} from "../../service/content-service.service";
 import {elementAt} from "rxjs";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-expanding-card',
-  template:`
+  standalone: true,
+  template: `
     <h3 class="title">Check Our Ongoing Ministries</h3>
 
     <div class="title-row"></div>
@@ -30,19 +32,14 @@ import {elementAt} from "rxjs";
 
             </div>
 
-            <div class="detail"  [@animate_transparency]="{value: i === currentIndex} ">
+            <div class="detail" [@animate_transparency]="{value: i === currentIndex} ">
               <p>
                 {{content.detail}}
               </p>
-              <div class="xMark"  *ngIf="{value: i === currentIndex}"
+              <div class="xMark" *ngIf="{value: i === currentIndex}"
                    (click)="xButtonClick()"><i class="fa-solid fa-circle-xmark"></i></div>
             </div>
           </div>
-
-
-
-
-
 
 
         </div>
@@ -52,9 +49,9 @@ import {elementAt} from "rxjs";
 
 
   `,
-  styles:[`
-    .row.big-wrap{
-      background-image:linear-gradient(to left,rgba(255,255,2550.7),rgba(255,255,255,0.1)
+  styles: [`
+    .row.big-wrap {
+      background-image: linear-gradient(to left, rgba(255, 255, 2550.7), rgba(255, 255, 255, 0.1)
       ), url("/assets/ministry_bg.jpg");
       background-size: cover;
       justify-content: center;
@@ -64,56 +61,57 @@ import {elementAt} from "rxjs";
 
     }
 
-    .title{
+    .title {
       margin-bottom: 0.5rem;
     }
 
-    .title-row{
+    .title-row {
       width: 100%;
       background: black;
       height: 2px;
       margin-bottom: 2rem;
     }
 
-    .card{
+    .card {
       padding: 0;
       box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
     }
 
-    .card-wrap{
+    .card-wrap {
       height: 32vh;
     }
 
-    .card-body{
+    .card-body {
       font-size: 1.0rem;
     }
 
-    p{
+    p {
       font-size: 1rem;
       margin-bottom: 0;
     }
 
     .custom-img {
       width: 100%;
-      height:  100%;
+      height: 100%;
     }
 
-    i{
+    i {
       display: block;
       font-size: 2rem;
     }
-    .arrow{
+
+    .arrow {
       margin-left: auto;
       width: 2rem;
       cursor: pointer;
     }
 
-    .fa-caret-down{
+    .fa-caret-down {
       transform: rotate(180deg);
     }
 
-    .detail{
-      background-color: rgba(0,0,0,0.7);
+    .detail {
+      background-color: rgba(0, 0, 0, 0.7);
       color: white;
       position: absolute;
       /*margin-top: 1rem;*/
@@ -122,20 +120,21 @@ import {elementAt} from "rxjs";
       flex: 1;
     }
 
-    .detail>p{
+    .detail > p {
       padding: 1rem;
       font-size: 0.8rem;
     }
 
-    .clicked{
+    .clicked {
       color: bisque;
     }
 
-    .xMark{
+    .xMark {
       display: flex;
       justify-content: right;
     }
-    .fa-circle-xmark{
+
+    .fa-circle-xmark {
       display: block;
       padding-right: 0.5rem;
       color: white;
@@ -144,16 +143,19 @@ import {elementAt} from "rxjs";
 
     @media (max-width: 767px) {
 
-      .row.big-wrap{
+      .row.big-wrap {
         padding: 0.4rem;
       }
-      .card-wrap{
+
+      .card-wrap {
         height: 70vh;
       }
-      .row{
+
+      .row {
         margin: 0 auto;
       }
-      .no-margin-container{
+
+      .no-margin-container {
         margin: 0;
         padding: 0;
       }
@@ -161,7 +163,11 @@ import {elementAt} from "rxjs";
     }
 
   `],
-  animations:[expander, transparency]
+  imports: [
+    NgForOf,
+    NgIf
+  ],
+  animations: [expander, transparency]
 })
 export class ExpandingCardComponent {
   @ViewChildren('arrow') arrow!:QueryList<ElementRef>;

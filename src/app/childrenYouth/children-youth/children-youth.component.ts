@@ -2,8 +2,13 @@ import {Component, ViewChild} from '@angular/core';
 import {ChildrenYouthIntroComponent} from "../children-youth-intro/children-youth-intro.component";
 import {PageTitleComponent} from "../../commonComponents/page-title/page-title.component";
 
+import {AppModule} from "../../app.module";
+import {SectionSeparatorComponent} from "../../commonComponents/section-separator/section-separator.component";
+import {YouthContentsComponent} from "../youth-contents/youth-contents.component";
+
 @Component({
   selector: 'app-children-youth',
+  standalone: true,
   template: `
     <app-page-title #childrenYouthTitle></app-page-title>
     <app-children-youth-intro></app-children-youth-intro>
@@ -11,6 +16,12 @@ import {PageTitleComponent} from "../../commonComponents/page-title/page-title.c
     <app-youth-contents></app-youth-contents>
 
   `,
+  imports: [
+    SectionSeparatorComponent,
+    ChildrenYouthIntroComponent,
+    YouthContentsComponent,
+    PageTitleComponent
+  ],
   styles: [
     `
 

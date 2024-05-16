@@ -1,11 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
-import {NgForm} from "@angular/forms";
+import {FormsModule, NgForm} from "@angular/forms";
 import {AuthServiceService} from "../routeGuard/auth-service.service";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
-  template:`
+  standalone: true,
+  template: `
     <div class="dummy"></div>
 
     <section>
@@ -27,14 +28,17 @@ import {Router} from "@angular/router";
 
 
     <style>
-      .dummy{
+      .dummy {
         width: 100%;
         height: 300px;
       }
     </style>
 
   `,
-  styles:[`
+  imports: [
+    FormsModule
+  ],
+  styles: [`
 
   `]
 })

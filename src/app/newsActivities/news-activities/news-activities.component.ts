@@ -3,10 +3,23 @@ import {PageTitleComponent} from "../../commonComponents/page-title/page-title.c
 import {ExpandingCardComponent} from "../../commonComponents/expanding-card/expanding-card.component";
 import {ContentServiceService} from "../../service/content-service.service";
 import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
+import {SectionSeparatorComponent} from "../../commonComponents/section-separator/section-separator.component";
+import {CalendarComponent} from "../calendar/calendar.component";
+import {SermonArchiveComponent} from "../sermon-archive/sermon-archive.component";
+import {VariousContentsComponent} from "../various-contents/various-contents.component";
 
 @Component({
   selector: 'app-news-activities',
+  standalone: true,
   templateUrl: './news-activities.component.html',
+  imports: [
+    SectionTitleComponent,
+    PageTitleComponent,
+    SectionSeparatorComponent,
+    CalendarComponent,
+    SermonArchiveComponent,
+    VariousContentsComponent
+  ],
   styleUrls: ['./news-activities.component.css']
 })
 export class NewsActivitiesComponent {

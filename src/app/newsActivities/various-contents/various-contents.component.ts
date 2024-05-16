@@ -1,16 +1,16 @@
 import {Component, NgModule, ViewChild} from '@angular/core';
-import {CommonComponentModuleModule} from "../../module/common-component-module.module";
-import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
+
 import {AppModule} from "../../app.module";
 import {ContentsBubbleComponent} from "../../commonComponents/contents-bubble/contents-bubble.component";
 import {CommonModule} from "@angular/common";
+import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
 
 @Component({
   selector: 'app-various-contents',
   standalone: true,
   imports: [
-    CommonComponentModuleModule,
     ContentsBubbleComponent,
+    SectionTitleComponent,
 
   ],
   template: `<section>
@@ -25,7 +25,7 @@ import {CommonModule} from "@angular/common";
 
 
   </section>`,
-  styleUrl: './various-contents.component.css'
+  styles: [``]
 })
 export class VariousContentsComponent {
 

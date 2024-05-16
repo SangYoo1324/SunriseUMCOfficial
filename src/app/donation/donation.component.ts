@@ -2,14 +2,17 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {SectionSeparatorComponent} from "../commonComponents/section-separator/section-separator.component";
 import {ContentServiceService} from "../service/content-service.service";
 import {PageTitleComponent} from "../commonComponents/page-title/page-title.component";
+import {ResourcesComponent} from "./resources/resources.component";
 
 @Component({
   selector: 'app-donation',
-  // standalone: true,
-  // imports: [
-  //   SectionSeparatorComponent
-  // ],
+  standalone: true,
   templateUrl: './donation.component.html',
+  imports: [
+    PageTitleComponent,
+    ResourcesComponent,
+    SectionSeparatorComponent
+  ],
   styleUrl: './donation.component.css'
 })
 export class DonationComponent {

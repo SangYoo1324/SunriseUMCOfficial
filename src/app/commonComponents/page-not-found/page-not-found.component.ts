@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-page-not-found',
+  standalone: true,
   template:`
     <div class="con">
       <div class="wrap">

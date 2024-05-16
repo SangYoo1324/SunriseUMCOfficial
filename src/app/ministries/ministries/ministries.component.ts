@@ -3,10 +3,12 @@ import {PageTitleComponent} from "../../commonComponents/page-title/page-title.c
 import {ContentServiceService} from "../../service/content-service.service";
 import {ExpandingCardComponent} from "../../commonComponents/expanding-card/expanding-card.component";
 import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
+import {AppModule} from "../../app.module";
 
 @Component({
   selector: 'app-ministries',
-  template:`
+  standalone: true,
+  template: `
     <app-page-title #ministryTitle></app-page-title>
     <section>
       <div class="container">
@@ -16,7 +18,8 @@ import {SectionTitleComponent} from "../../commonComponents/section-title/sectio
             <div class="container p-3 cover">
               <h5 class="mt-2">HELPING OTHERS</h5>
               <blockquote class="blockquote">
-                <p class="mb-0">You, my brothers, were called to be free. But do not use your freedom to indulge the sinful nature; rather, serve one another in love.</p>
+                <p class="mb-0">You, my brothers, were called to be free. But do not use your freedom to indulge the
+                  sinful nature; rather, serve one another in love.</p>
                 <footer class="blockquote-footer">Galatians 5:13<cite title="Source Title"></cite></footer>
               </blockquote>
             </div>
@@ -27,9 +30,12 @@ import {SectionTitleComponent} from "../../commonComponents/section-title/sectio
         <app-section-title #sectionTitle></app-section-title>
 
         <div class="intro-statement">
-          <p>Sunrise has an active prayer chain of prayer "warriors". If you would like to be added to our list of active members, please call Brad in the office.
-            May we pray for you? If you have a joy or a concern you would like us to pray for, please call us at the office at (253) 815-6925 during office hours.
-            Outside of office hours, call the office and leave a message. Or you can e-mail Brad at office&#64;sunriseunitedmethodist.org. Please include your name,
+          <p>Sunrise has an active prayer chain of prayer "warriors". If you would like to be added to our list of
+            active members, please call Brad in the office.
+            May we pray for you? If you have a joy or a concern you would like us to pray for, please call us at the
+            office at (253) 815-6925 during office hours.
+            Outside of office hours, call the office and leave a message. Or you can e-mail Brad at office&#64;sunriseunitedmethodist.org.
+            Please include your name,
             the name of the person to be prayed for and what you would like us to pray about.
           </p>
         </div>
@@ -43,15 +49,20 @@ import {SectionTitleComponent} from "../../commonComponents/section-title/sectio
 
 
   `,
-  styles:[`
-    .title-card{
+  imports: [
+    ExpandingCardComponent,
+    PageTitleComponent,
+    SectionTitleComponent
+  ],
+  styles: [`
+    .title-card {
       margin-top: 3rem;
       margin-bottom: 3rem;
     }
 
     /*helping others box*/
-    .helping-others{
-      background-image:linear-gradient(to top,rgba(255,255,255,.4),rgba(255,255,255,.6)
+    .helping-others {
+      background-image: linear-gradient(to top, rgba(255, 255, 255, .4), rgba(255, 255, 255, .6)
       ), url("/assets/Helping_Others.jpg");
       background-size: cover;
       background-position: center 40%;
@@ -62,22 +73,22 @@ import {SectionTitleComponent} from "../../commonComponents/section-title/sectio
       box-shadow: 0 10px 20px black;
     }
 
-    h5{
+    h5 {
       color: #ed4848;
     }
-    .box{
+
+    .box {
       width: 60%;
       margin: 0 auto;
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
     }
 
-    footer{
+    footer {
       margin-top: 1rem;
     }
 
 
-
-    .intro-statement{
+    .intro-statement {
       /*width: 80%;*/
       margin: 3rem auto;
       font-size: 1.2rem;
@@ -86,11 +97,11 @@ import {SectionTitleComponent} from "../../commonComponents/section-title/sectio
 
 
     @media (max-width: 767px) {
-      .intro-statement{
+      .intro-statement {
         font-size: 1rem;
       }
 
-      .box{
+      .box {
         width: 90%;
 
       }

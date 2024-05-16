@@ -2,6 +2,7 @@ import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-section-title',
+  standalone: true,
   template:`
     <div class="container section-title-comp-container">
       <div class="title_comp">

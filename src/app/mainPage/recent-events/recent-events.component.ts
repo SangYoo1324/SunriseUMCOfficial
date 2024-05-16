@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, Renderer2, ViewChild} from '@angular/core';
-import {CommonComponentModuleModule} from "../../module/common-component-module.module";
+
 import {SectionTitleComponent} from "../../commonComponents/section-title/section-title.component";
 
 import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
@@ -11,13 +11,13 @@ import {NewsItemComponent} from "./news-item/news-item.component";
   selector: 'app-recent-events',
   standalone: true,
   imports: [
-    CommonComponentModuleModule,
     NgStyle,
     NgForOf,
     NgClass,
     NgIf,
     SwiperComponent,
-    NewsItemComponent
+    NewsItemComponent,
+    SectionTitleComponent
   ],
   template:`
     <section>

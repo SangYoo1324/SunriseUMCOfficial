@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-right-intro-section',
   templateUrl: './right-intro-section.component.html',
   styleUrls: ['./right-intro-section.component.css']

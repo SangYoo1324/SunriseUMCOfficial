@@ -4,7 +4,11 @@ import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-visit-info',
+  standalone: true,
   templateUrl: './visit-info.component.html',
+  imports: [
+    SectionTitleComponent
+  ],
   styleUrls: ['./visit-info.component.css']
 })
 export class VisitInfoComponent {
