@@ -81,7 +81,7 @@ export class NewsListComponent {
   ngOnInit(){
     this.contentService.newsStream.subscribe(subj=>{
       subj.subscribe((obs:any)=>{
-        console.log(obs);
+        console.log("news-list",obs);
         this.sortPage(obs);
         this.items = obs;
         this.dataSource.data = this.items;

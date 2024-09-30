@@ -28,27 +28,32 @@ import { Component } from '@angular/core';
   styles: [`
 
         .slider{
-        /*overflow: hidden;*/
+          overflow: hidden;
           position: relative;
           width: auto;
+          border-radius: 2rem;
         }
 
         .slider .slider-track{
           display: flex;
-          width: calc(250px * 12);
+          width: calc(350px * 12);
+          border-radius: 2rem;
+          animation: scroll 30s linear infinite;
         }
 
         .slide{
-          height: 250px;
-          width: 250px;
+          height: 350px;
+          width: 350px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
         img{
-          width: 250px;
-          height: 250px;
+          width: 350px;
+          height: 350px;
+
+
         }
 
         @keyframes scroll {
@@ -56,7 +61,7 @@ import { Component } from '@angular/core';
             transform: translateX(0);
           }
           100%{
-            transform: translateX(calc(-250px *6));
+            transform: translateX(calc(-350px *6));
           }
         }
 

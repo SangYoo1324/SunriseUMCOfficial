@@ -30,6 +30,7 @@ import {SliderComponent} from "../slider/slider.component";
       margin-top: 2rem;
       position: relative;
       border-radius: 2rem;
+      box-shadow: 10px 10px 10px rgba(0,0,0,0.9);
 
       border: 2px solid black;
       height: 350px;
@@ -80,9 +81,9 @@ import {SliderComponent} from "../slider/slider.component";
     }
 
     @media (max-width: 767px) {
-      .display-outlet {
-        height: 750px;
-      }
+      /*.display-outlet {*/
+      /*  height: 750px;*/
+      /*}*/
 
       .col-lg-6 {
         margin-top: 1rem;

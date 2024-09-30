@@ -66,13 +66,16 @@ section{
 }
 
 
+/*얘네들은 main css에 넣어야 적용되서 main css에 넣어놓음*/
 .fc-h-event .fc-event-title{
-  hyphens: auto;
-  width: 100%;
-}
-.fc-event-title{
+  color: black !important;
+  font-weight: bold !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
   font-size: 0.7rem !important;
 }
+
 
 .fc-dayGridWeek th.fc-day-header.fc-widget-header.fc-sun {
   background-color: #f2fe8a; /* 일요일의 배경색을 변경 */

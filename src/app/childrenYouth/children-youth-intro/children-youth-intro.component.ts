@@ -37,7 +37,7 @@ import {CarouselComponent} from "../../commonComponents/carousel/carousel.compon
                   Jesus and follow him is vital. We provide Sunday School, Vacation Bible School and youth events
                   and outings. Come grow with us in our vision to see families coming to Jesus with our young people
                   leading the way into the next generation for God's glory and Kingdom Come.
-                </p>></app-right-intro-section>
+                </p></app-right-intro-section>
             </div>
           </div>
         </div>

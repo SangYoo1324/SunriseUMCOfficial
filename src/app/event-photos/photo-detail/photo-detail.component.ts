@@ -3,7 +3,7 @@ import {PageTitleComponent} from "../../commonComponents/page-title/page-title.c
 import {ContentServiceService} from "../../service/content-service.service";
 import {async, map, Observable} from "rxjs";
 import {ActivatedRoute, RouterLink} from "@angular/router";
-import {DatePipe, NgIf} from "@angular/common";
+import {DatePipe, NgFor, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-photo-detail',
@@ -19,11 +19,11 @@ import {DatePipe, NgIf} from "@angular/common";
     <!--    안그럼... 계속 생성이 안됨... ngOnInit()이 observable을 -->
     <!--    백엔드 서버에서 받아오느라 html보다 먼저 실행되버리기 때문에-->
 
-    <div class="outer-wrap container mt-5" *ngIf="eventPhotoObject.foundPhoto">
+    <div class="outer-wrap container mt-5" *ngIf="eventPhotoObject">
       <div class="info-wrap">
         <div class="row title_wrap">
           <div class="subject">Title</div>
-          <div class="detail">{{eventPhotoObject!.title}}</div>
+          <div class="detail">{{eventPhotoObject!.foundPhoto.title}}</div>
         </div>
         <div class="row title_wrap">
           <div class="subject">Poster</div>
@@ -31,7 +31,7 @@ import {DatePipe, NgIf} from "@angular/common";
         </div>
         <div class="row title_wrap">
           <div class="subject">Date</div>
-          <div class="detail">{{eventPhotoObject!.date | date:'MMM d, y'}}</div>
+          <div class="detail">{{eventPhotoObject!.foundPhoto.date | date:'MMM d, y'}}</div>
         </div>
 
       </div>
@@ -40,7 +40,7 @@ import {DatePipe, NgIf} from "@angular/common";
 
 
         <div class="photos">
-          <img *ngFor="let image of eventPhotoObject!.s3_urls" [src]="image" alt="">
+          <img *ngFor="let image of eventPhotoObject!.foundPhoto.s3_urls" [src]="image" alt="">
 
         </div>
       </div>
@@ -210,6 +210,7 @@ import {DatePipe, NgIf} from "@angular/common";
   `,
   imports: [
     NgIf,
+    NgFor,
     RouterLink,
     DatePipe,
     PageTitleComponent
@@ -264,7 +265,7 @@ export class PhotoDetailComponent {
    this.eventPhotoObject$.subscribe((item)=>{
      this.eventPhotoObject =  item;
      this.endIndex = item.totalEventPhotos-1;
-     console.log(item);});
+     console.log("item check",item);});
     });
 
   }

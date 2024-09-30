@@ -37,7 +37,9 @@ export class CalendarComponent {
     // eventContent: this.handleEventRender.bind(this),
     eventDidMount: function(info) {
       const maxLength = 10;
-      const trimmedTitle = info.event.title.length > maxLength ? info.event.title.substring(0, maxLength) + '...' : info.event.title;
+      const trimmedTitle = 
+      // info.event.title.length > maxLength ? info.event.title.substring(0, maxLength) + '...' : 
+      info.event.title;
       console.log("info.event.title", info.event.title);
       console.log("info.el", info.el);
 

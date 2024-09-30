@@ -62,20 +62,20 @@ import {buildEntryKey} from "@fullcalendar/core/internal";
     }
 
     .image-section{
-      /*background: url("/assets/bible_study.jpg");*/
-      /* min-height: 500px; */
-      /*padding: 1rem;*/
+     
+      padding: 1rem;
 
     }
 
     .img{
-      /*padding: 1rem;*/
-      background-size: cover;
+      padding: 1rem;
+      background-size: contain;
       background-position: center;
+      background-repeat: no-repeat;
       width: 100%;
       height: 0;
       padding-bottom: 85%;
-      /*object-fit: cover;*/
+    
     }
 
     .wrap{
@@ -105,7 +105,7 @@ import {buildEntryKey} from "@fullcalendar/core/internal";
       }
       .description{
         padding: 0;
-        font-size: 1rem;
+        font-size: .8rem;
       }
 
     }

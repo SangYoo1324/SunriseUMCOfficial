@@ -43,7 +43,7 @@ import {RouterLink} from "@angular/router";
 
         <mat-paginator
           [length]="length"
-          [pageSize]="5"
+          [pageSize]="pageSize"
           [showFirstLastButtons]=true
           [pageSizeOptions]="[5,10,20]"
           [pageIndex]="currentPage"
@@ -73,7 +73,15 @@ import {RouterLink} from "@angular/router";
       /*.search-active{*/
       /*  display: block;*/
       /*}*/
+      .card-title{
+        min-height: 3rem;
+      }
 
+      .card-text{
+        overflow: hidden;
+       text-overflow: ellipsis;
+       white-space: nowrap;
+      }
       img {
         min-height: 250px;
         max-height: 250px;
@@ -101,7 +109,7 @@ import {RouterLink} from "@angular/router";
 export class EventPhotosComponent {
 
   searchMode!:boolean;
-
+  pageSize = 10;
   //pagination related Variables
   // currentPage:number= 1;
   // limit:number = 8;
@@ -129,7 +137,7 @@ export class EventPhotosComponent {
             this.length = obs.length;
             this.items = obs;
             this.storedItems =obs;
-            this.loadPage(5,0);
+            this.loadPage(this.pageSize,0);
           })
         });
       // }

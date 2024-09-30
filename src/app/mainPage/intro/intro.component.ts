@@ -238,13 +238,13 @@ import {LoadingMarkComponent} from "../../commonComponents/loading-mark/loading-
       justify-content: center;
       cursor: pointer;
       box-shadow: 3px 3px 3px black;
+      overflow: hidden;
     }
 
 
     .nav_item:hover {
       box-shadow: none;
-      margin-left: 2px;
-      margin-top: 2px;
+
     }
 
     .text_wrap > p, .text_wrap > i {
@@ -255,6 +255,10 @@ import {LoadingMarkComponent} from "../../commonComponents/loading-mark/loading-
       width: 90%;
       display: flex;
       justify-content: space-between;
+    }
+
+    .nav_item:hover .text_wrap {
+      scale: 1.1;
     }
 
     .text_wrap > div {

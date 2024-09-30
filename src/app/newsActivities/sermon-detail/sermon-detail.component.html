@@ -1,0 +1,132 @@
+<app-page-title #newsActivitiesTitle></app-page-title>
+
+<section>
+  <div class="container">
+    <div class="btn-wrap">
+      <div class="each_btn_wrap">
+        <button *ngIf="(targetedSermonObservable$ | async)?.id !== 1"
+                type="button" class="nav_button btn btn btn-secondary" routerLink="/newsActivities/sermonDetail/{{(targetedSermonObservable$ | async)?.id-1}}">prev</button>
+        <div *ngIf="(targetedSermonObservable$ | async)?.id == 1" class="page_indicator nav_button">This is First Page</div>
+      </div>
+
+      <div class="each_btn_wrap">
+        <button *ngIf="(targetedSermonObservable$ | async)?.id< endIndex"
+                type="button" class="nav_button btn btn-secondary" routerLink="/newsActivities/sermonDetail/{{(targetedSermonObservable$ | async)?.id+1}}">next</button>
+        <div *ngIf="(targetedSermonObservable$ | async)?.id === endIndex" class="page_indicator nav_button">This is Last Page</div>
+      </div>
+
+    </div>
+    <div class="content_wrap">
+
+      <h1>{{(targetedSermonObservable$ | async)?.title}}</h1>
+
+      <div #iframeSlot class="iframeSlot">
+
+        <iframe width="100%" height="480"    [src]="(targetedSermonObservable$ | async)?.iframe" title="Build Angular Pagination Without a Library" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+      </div>
+
+      <div class="row detail">
+        <div class="col-lg-5 hym">
+          <h3>Hyms</h3>
+          <p>
+            <li *ngFor="let hym of (targetedSermonObservable$ | async)?.hyms" >
+              {{hym.value}}
+            </li>
+
+          </p>
+        </div>
+        <div class="col-lg-7 scripture">
+          <h3>Scripture Readings</h3>
+          <p>
+            {{(targetedSermonObservable$ | async)?.scripture}}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <a routerLink="/newsActivities">Back to List</a>
+  </div>
+
+
+</section>
+
+
+<style>
+  .detail{
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .nav_button{
+    display: block;
+    margin: 0 1rem;
+  }
+  .btn-wrap{
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+   a{
+     display: block;
+     width: 150px;
+     margin-top: 2rem;
+     margin-left: auto;
+   }
+
+   h3{
+     color: #ed4848;
+   }
+
+   .page_indicator{
+     color: cornflowerblue;
+   }
+
+
+  .content_wrap{
+    padding: 2rem;
+    border: 1px solid black;
+    border-radius: 2rem;
+  }
+
+  .hym{
+    border-right: 1px solid black;
+    border-bottom: none;
+  }
+
+  .scripture{
+    padding-left: 3rem;
+  }
+
+  @media (max-width: 1024px) {
+
+    .content_wrap{
+      padding: 0;
+      border: none;
+    }
+
+    iframe{
+      height: 350px;
+    }
+
+    .hym{
+      border-right: none;
+      border-bottom: 1px solid black;
+      margin-bottom: 1rem;
+    }
+
+    .detail{
+      font-size: 1rem;
+    }
+
+    .scripture{
+      padding: 1rem;
+    }
+
+  }
+
+</style>
